@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fc4c02">
+<title>Sahil's Marathon Plan — Seattle Nov 29 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23fc4c02'/%3E%3Ctext x='50' y='70' font-size='70' text-anchor='middle' fill='white' font-weight='900' font-family='Helvetica'%3ER%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --orange: #fc4c02;
+    --orange-dark: #d44102;
+    --orange-soft: #fff1ea;
+    --ink: #1c1c1d;
+    --ink-2: #4a4a52;
+    --ink-3: #8a8a93;
+    --line: #e7e7ec;
+    --bg: #ffffff;
+    --bg-soft: #f7f7f9;
+    --green: #18a957;
+    --amber: #f59e0b;
+    --red: #dc2626;
+    --blue: #2563eb;
+    --pink: #db2777;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px -8px rgba(0,0,0,.06);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg-soft);
+    font-size: 15px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+  h1, h2, h3, h4 { margin: 0; font-weight: 900; letter-spacing: -0.02em; }
+  h1 { font-size: 32px; line-height: 1.05; }
+  h2 { font-size: 22px; line-height: 1.1; }
+  h3 { font-size: 17px; }
+  h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-weight: 800; }
+  a { color: var(--orange); text-decoration: none; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  .pad-top { padding-top: 20px; }
+  .pad-bottom { padding-bottom: 20px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--orange) 0%, #ff7a3d 100%);
+    color: #fff;
+    padding: 28px 16px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; right: -60px; top: -60px;
+    width: 240px; height: 240px; border-radius: 50%;
+    background: rgba(255,255,255,.07);
+  }
+  .hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; opacity: .85; }
+  .hero h1 { font-size: 34px; margin-top: 4px; }
+  .hero h1 small { display: block; font-size: 14px; font-weight: 700; opacity: .85; margin-top: 4px; letter-spacing: 0; text-transform: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 20px; }
+  .hero-stat { background: rgba(255,255,255,.14); border-radius: 10px; padding: 10px 12px; }
+  .hero-stat .v { font-size: 24px; font-weight: 900; line-height: 1; }
+  .hero-stat .l { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: .8; margin-top: 4px; font-weight: 700; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+    margin: 14px 0;
+  }
+  .card-flat { background: var(--bg); border-radius: 12px; padding: 14px; border: 1px solid var(--line); margin: 10px 0; }
+  .card h2 { margin-bottom: 4px; }
+  .card-sub { font-size: 13px; color: var(--ink-3); }
+
+  /* TODAY */
+  .today-banner {
+    background: var(--ink);
+    color: #fff;
+    margin: -8px -16px 14px;
+    border-radius: 14px 14px 0 0;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .today-pill {
+    background: var(--orange);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* SECTION */
+  section { margin-top: 18px; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .section-head h2 { font-size: 19px; }
+  .section-head .tag { font-size: 11px; color: var(--ink-3); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* PHASES TIMELINE */
+  .phases {
+    display: grid; gap: 8px;
+  }
+  .phase {
+    display: grid;
+    grid-template-columns: 8px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+  }
+  .phase.active { border-color: var(--orange); background: var(--orange-soft); }
+  .phase.done { opacity: .55; }
+  .phase-bar {
+    width: 6px; height: 100%; min-height: 36px;
+    border-radius: 3px;
+  }
+  .phase .name { font-weight: 800; font-size: 14px; }
+  .phase .meta { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+  .phase .stat { text-align: right; }
+  .phase .stat .v { font-weight: 900; font-size: 14px; }
+  .phase .stat .l { font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+
+  /* WEEK CARDS */
+  .week {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin: 10px 0;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .week.current { border: 2px solid var(--orange); }
+  .week.race-week { border: 2px solid var(--red); }
+  .week-head {
+    padding: 12px 14px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+  }
+  .week-num {
+    width: 38px; height: 38px;
+    background: var(--bg-soft);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 16px;
+    color: var(--ink-2);
+  }
+  .week.current .week-num { background: var(--orange); color: #fff; }
+  .week.race-week .week-num { background: var(--red); color: #fff; }
+  .week.done .week-num { background: var(--green); color: #fff; }
+  .week-title { font-weight: 800; font-size: 15px; line-height: 1.2; }
+  .week-meta { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+  .week-chevron {
+    color: var(--ink-3); font-size: 14px;
+    transition: transform 0.2s;
+  }
+  .week.open .week-chevron { transform: rotate(90deg); }
+  .week-body {
+    display: none;
+    padding: 4px 14px 14px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-soft);
+  }
+  .week.open .week-body { display: block; }
+
+  /* SESSIONS within a week */
+  .session {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .session:last-child { border-bottom: none; }
+  .session-day {
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 8px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+  }
+  .session-day .dow { font-size: 9px; font-weight: 800; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; }
+  .session-day .num { font-weight: 900; font-size: 18px; line-height: 1; margin-top: 1px; }
+  .session-type {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    margin-bottom: 4px;
+  }
+  .session-type.run { background: var(--orange-soft); color: var(--orange-dark); border-color: transparent; }
+  .session-type.quality { background: #fee2e2; color: var(--red); border-color: transparent; }
+  .session-type.long { background: #dcfce7; color: var(--green); border-color: transparent; }
+  .session-type.strength { background: #dbeafe; color: var(--blue); border-color: transparent; }
+  .session-type.rest { background: #f3f4f6; color: var(--ink-3); border-color: transparent; }
+  .session-type.race { background: var(--red); color: #fff; border-color: transparent; }
+  .session-type.injection { background: #fce7f3; color: var(--pink); border-color: transparent; }
+  .session-type.peak { background: #fde047; color: #713f12; border-color: transparent; }
+  .session-title { font-weight: 700; font-size: 14px; line-height: 1.3; }
+  .session-detail { font-size: 12.5px; color: var(--ink-2); margin-top: 3px; line-height: 1.4; }
+  .session-metrics {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;
+  }
+  .metric {
+    font-size: 10.5px; font-weight: 700; color: var(--ink-2);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 6px;
+  }
+  .metric.hot { background: var(--orange-soft); border-color: transparent; color: var(--orange-dark); }
+
+  /* RULES / KEYS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 480px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  .key {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .key:last-child { border-bottom: none; }
+  .key .l { font-weight: 700; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; min-width: 92px; }
+  .key .v { font-size: 13px; font-weight: 600; }
+
+  /* FUEL TABLE */
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+  table th { text-align: left; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); padding: 6px 6px; border-bottom: 2px solid var(--line); }
+  table td { padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table tr:last-child td { border-bottom: none; }
+  td .pill { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 6px; }
+  td .pill.now { background: var(--orange); color: #fff; }
+  td .pill.upcoming { background: var(--blue); color: #fff; }
+  td .pill.done { background: var(--green); color: #fff; }
+
+  /* GEAR + RACE */
+  .gear {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+  }
+  .gear:last-child { border-bottom: none; }
+  .gear-icon { font-size: 20px; }
+  .gear-date { font-size: 12px; font-weight: 800; color: var(--orange-dark); }
+  .gear-item { font-size: 13px; font-weight: 600; }
+  .gear-note { font-size: 11px; color: var(--ink-3); }
+
+  /* RACE DAY */
+  .race-strategy {
+    background: linear-gradient(135deg, #1c1c1d 0%, #2d2d33 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 14px 0;
+  }
+  .race-strategy h2 { color: #fff; }
+  .race-strategy .card-sub { color: rgba(255,255,255,.7); }
+  .race-mile {
+    display: grid; grid-template-columns: 80px 1fr; gap: 12px;
+    padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.08);
+    font-size: 13px;
+  }
+  .race-mile:last-child { border-bottom: none; }
+  .race-mile .miles { font-weight: 900; color: var(--orange); }
+  .race-mile.warning .miles { color: var(--amber); }
+  .race-mile.finish .miles { color: var(--green); }
+
+  /* CONTROLS */
+  .controls {
+    display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 4px;
+  }
+  .btn {
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: 12px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+  .btn:hover { border-color: var(--ink-3); }
+  .btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 16px 30px;
+    font-size: 11.5px;
+    color: var(--ink-3);
+  }
+  footer a { color: var(--orange); }
+
+  /* DARK MODE */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f1f1f3;
+      --ink-2: #c5c5cb;
+      --ink-3: #8a8a93;
+      --line: #2c2c30;
+      --bg: #1c1c20;
+      --bg-soft: #131316;
+      --orange-soft: #3a1a05;
+    }
+    .session-type.rest { background: #2a2a2e; color: var(--ink-3); }
+    .session-type.run { background: #3a1a05; }
+    .session-type.quality { background: #3d1414; }
+    .session-type.long { background: #0e2818; }
+    .session-type.strength { background: #11243f; }
+    .session-type.injection { background: #321022; }
+    .session-type.peak { background: #2d2007; color: #fde047; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">SEATTLE MARATHON · NOV 29 2026</div>
+    <h1>Marathon, take one.<small>Sahil's plan — built by Coach. 26.2 miles. Target 5:45.</small></h1>
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <div class="v" id="hero-days">—</div>
+        <div class="l">Days to Seattle</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v" id="hero-week">—</div>
+        <div class="l">Current Week</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">5:45</div>
+        <div class="l">Target Time</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container pad-top">
+
+  <!-- TODAY / UP NEXT -->
+  <div class="card" id="today-card">
+    <div class="today-banner">
+      <span id="today-banner-label">UP NEXT</span>
+      <span class="today-pill" id="today-pill">—</span>
+    </div>
+    <div id="today-content">
+      <h2 id="today-title">Loading…</h2>
+      <div class="card-sub" id="today-sub"></div>
+      <div class="session-detail" id="today-detail" style="margin-top: 8px;"></div>
+      <div class="session-metrics" id="today-metrics" style="margin-top: 10px;"></div>
+    </div>
+  </div>
+
+  <!-- PHASES -->
+  <section>
+    <div class="section-head">
+      <h2>The 27-Week Map</h2>
+      <span class="tag">Built May 21 · Revised May 24</span>
+    </div>
+    <div class="phases" id="phases"></div>
+  </section>
+
+  <!-- WEEKS -->
+  <section>
+    <div class="section-head">
+      <h2>Week by Week</h2>
+      <span class="tag" id="week-count">— weeks</span>
+    </div>
+    <div class="controls">
+      <button class="btn active" data-filter="all">All</button>
+      <button class="btn" data-filter="current">Current</button>
+      <button class="btn" data-filter="upcoming">Upcoming</button>
+      <button class="btn" data-filter="past">Past</button>
+    </div>
+    <div id="weeks"></div>
+  </section>
+
+  <!-- FUEL & TRAINING RULES -->
+  <section>
+    <div class="section-head">
+      <h2>Operating Rules</h2>
+      <span class="tag">Cadence, HR, pain gates</span>
+    </div>
+    <div class="card-flat">
+      <div class="key"><span class="l">CADENCE</span><span class="v">155 spm (Wks 1-3) → 158 (Wks 4-6) → 160-162 (Wks 7+)</span></div>
+      <div class="key"><span class="l">HR Z2 EASY</span><span class="v">ceiling 150 — conversational, comfortable</span></div>
+      <div class="key"><span class="l">HR TEMPO</span><span class="v">160-170 — RPE 7, "comfortably hard"</span></div>
+      <div class="key"><span class="l">HR MAX</span><span class="v">tempo ceiling 170, never over for easy</span></div>
+      <div class="key"><span class="l">MP TARGET</span><span class="v">~13:00-13:15/mi (5:45 marathon pace)</span></div>
+      <div class="key"><span class="l">FOOT &gt;3/10</span><span class="v">during run → STOP, walk home, ice</span></div>
+      <div class="key"><span class="l">SHARP PAIN</span><span class="v">any level → STOP immediately</span></div>
+      <div class="key"><span class="l">AM &gt;3/10</span><span class="v">that day's run cancelled, walk only</span></div>
+      <div class="key"><span class="l">7+ DAYS &gt;3</span><span class="v">call ortho, MRI conversation</span></div>
+      <div class="key"><span class="l">FLAT ONLY</span><span class="v">Wks 1-4 (peroneal protection)</span></div>
+      <div class="key"><span class="l">ROUTES</span><span class="v">Lake Merced, Embarcadero, Sunset/Ocean Beach, Crissy, Marina</span></div>
+    </div>
+  </section>
+
+  <!-- FUELING REHEARSAL -->
+  <section>
+    <div class="section-head">
+      <h2>Fueling Rehearsal</h2>
+      <span class="tag">Gut training schedule</span>
+    </div>
+    <div class="card-flat">
+      <table>
+        <thead><tr><th>Wk</th><th>Pre-run</th><th>Mid-run</th></tr></thead>
+        <tbody>
+          <tr><td>1-4</td><td>Smoothie 90 min</td><td>Water only</td></tr>
+          <tr><td>5</td><td>Smoothie 90 min</td><td>🍯 1 Maurten @ min 25</td></tr>
+          <tr><td>6</td><td>Smoothie 90 min</td><td>🍯🍯 2 Maurten (min 25, 50)</td></tr>
+          <tr><td><strong>7</strong></td><td><strong>🥯 Breakfast B</strong> (½ bagel + PB + banana + coffee, 2.5 hr pre)</td><td>2 Maurten + electrolytes</td></tr>
+          <tr><td><strong>8</strong></td><td><strong>🥯 Breakfast B</strong> + race kit</td><td>2-3 Maurten + race singlet/shoes/vest</td></tr>
+          <tr><td>9</td><td>Smoothie + breakfast taste-test</td><td>1 Maurten</td></tr>
+          <tr><td><strong>10 (race)</strong></td><td><strong>🥯 Breakfast B</strong> 3 hr pre</td><td>2-3 Maurten per race plan</td></tr>
+          <tr><td>11-12</td><td>Smoothie</td><td>0-2 Maurten</td></tr>
+          <tr><td>13-17</td><td>Smoothie / Breakfast B mix</td><td>3-5 gels (every 25 min)</td></tr>
+          <tr><td>18-23</td><td><strong>🥯 Breakfast B</strong> on long runs</td><td>5-7 gels on MP-block long runs</td></tr>
+          <tr><td><strong>24-25</strong></td><td><strong>🥯 Breakfast B</strong> at exact race timing</td><td>10-12 Maurten (full dress rehearsal)</td></tr>
+          <tr><td><strong>RACE</strong></td><td><strong>🥯 Breakfast B</strong> 3 hr pre</td><td>10-12 Maurten every 20-25 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- GEAR DEADLINES -->
+  <section>
+    <div class="section-head">
+      <h2>Gear Deadlines</h2>
+      <span class="tag">Don't get caught short</span>
+    </div>
+    <div class="card-flat" id="gear-list"></div>
+  </section>
+
+  <!-- RACE DAY STRATEGY -->
+  <section class="race-strategy">
+    <div class="hero-eyebrow" style="opacity:.65">RACE DAY · SUN NOV 29</div>
+    <h2 style="margin-top:2px;">Seattle Marathon Plan</h2>
+    <div class="card-sub" style="margin-top:4px;">26.2 mi · target 5:45 (~13:10/mi avg) · 10-12 Maurten · low 40s + likely rain</div>
+
+    <h4 style="color:rgba(255,255,255,.55); margin-top:18px; font-size:11px;">Pacing</h4>
+    <div class="race-mile"><span class="miles">Mile 1-2</span><span>Deliberately easy ~13:30/mi. <strong>Don't chase</strong> fast starters.</span></div>
+    <div class="race-mile"><span class="miles">Mile 3-13</span><span>Settle 13:00-13:15/mi. HR target ~155-165.</span></div>
+    <div class="race-mile"><span class="miles">Mile 13-18</span><span>Hold. Mental check — pain? fuel? hydration?</span></div>
+    <div class="race-mile"><span class="miles">Mile 19-22</span><span>Dig in. HR drifts up — OK. Pace may slow to 13:30 — fine.</span></div>
+    <div class="race-mile warning"><span class="miles">Mile 23</span><span><strong>WALK THE ENTIRE CLIMB.</strong> Not a fallback — the plan.</span></div>
+    <div class="race-mile finish"><span class="miles">Mile 24-26.2</span><span>Net downhill. If legs have it: run. Push the last mile.</span></div>
+
+    <h4 style="color:rgba(255,255,255,.55); margin-top:18px; font-size:11px;">Fueling</h4>
+    <div style="font-size:13px; line-height:1.6;">
+      🍯 10-12 Maurten gels, every 20-25 min · 🥤 Maurten Drink Mix in vest · 💧 Water at every aid · Total race carbs 300-360 g
+    </div>
+
+    <h4 style="color:rgba(255,255,255,.55); margin-top:18px; font-size:11px;">Weather Kit</h4>
+    <div style="font-size:13px; line-height:1.6;">
+      Race-tested rain shell · brimmed hat · Body Glide everywhere · throwaway warm layer at start
+    </div>
+  </section>
+
+  <footer>
+    Built by Coach · <a href="https://gist.github.com/theromeapp/2c314fbef028bcfb324ee0a65fe6967d">Calendar Gist</a> · <span id="updated">—</span>
+  </footer>
+
+</div>
+
+<script>
+/* =====================================================
+   DATA
+   ===================================================== */
+const RACE_DATE = new Date(2026, 10, 29); // Nov 29 2026
+const TODAY = new Date(); TODAY.setHours(0,0,0,0);
+
+const phases = [
+  { name: "0. Bridge", dates: "Apr 20 – May 20", wks: 4, focus: "Cut, fueling, sleep, upper strength", status: "done" },
+  { name: "1. RTR + 10K B-Race", dates: "May 21 – Jul 26", wks: 10, focus: "Walk-jog → continuous; cruise → 15-min tempo. SF 10K Jul 26", longRun: "25 min → 90 min" },
+  { name: "2. Recovery + Rebuild", dates: "Jul 27 – Aug 9", wks: 2, focus: "Post-race recovery, no quality, easy aerobic", longRun: "75 → 95 min" },
+  { name: "3. Aerobic Base", dates: "Aug 10 – Sep 13", wks: 5, focus: "4 runs/wk Z2, tempo, first hills", longRun: "95 min → 2:15" },
+  { name: "4. Marathon Build", dates: "Sep 14 – Oct 25", wks: 6, focus: "4 runs/wk, 1 quality, MP segments in long run", longRun: "2:15 → 3:15" },
+  { name: "5. Peak", dates: "Oct 26 – Nov 8", wks: 2, focus: "Last hard block. Full dress rehearsals", longRun: "3:30 / 18-20 mi" },
+  { name: "6. Taper", dates: "Nov 9 – 28", wks: 3, focus: "−25/−50/−75% volume. Intensity held. Carb load wk 3", longRun: "2:00 → 1:00" },
+  { name: "RACE", dates: "Sun Nov 29", wks: 0, focus: "Seattle Marathon — 26.2 mi · target 5:45", status: "race" },
+];
+
+const gear = [
+  { date: "Jun 18", item: "🍯 12-pack Maurten 100 gels", note: "Gut training start", phase: "Wk 5" },
+  { date: "Aug 15", item: "🎒 Hydration vest", note: "Test on Wk 13 long run", phase: "Wk 13" },
+  { date: "Sep 1", item: "👟 Race shoes ordered", note: "Hoka Bondi / Brooks Glycerin / Asics Nimbus", phase: "Wk 16" },
+  { date: "Sep 1", item: "🍯 Maurten bulk order (40 gels)", note: "For build + race", phase: "Wk 16" },
+  { date: "Oct 15", item: "👟 Race shoes broken in", note: "50+ mi by today", phase: "Wk 22" },
+  { date: "Oct 30", item: "🌧️ Rain gear tested", note: "Seattle = low 40s + rain", phase: "Wk 24" },
+  { date: "Nov 27-28", item: "🎽 Race kit laid out", note: "Bib pinned, vest filled, gels packed", phase: "Race wk" },
+];
+
+/* Weeks — most data lives here. Each session has type, day-letter, title, detail, metrics, and optional flag */
+const weeks = [
+  {
+    n: 1, dates: "May 18-24", phase: 1, startMonth: 4, startDay: 18,
+    title: "RTR Wk 1 — Run 1 Back",
+    summary: "Foot cleared by ortho. Run 1 done Thu (1.32 mi outdoor, 11:57/mi). Sun = Run 2.",
+    sessions: [
+      { d: "Mon", n: 18, type: "rest", t: "Rest", det: "Pre-clearance day." },
+      { d: "Tue", n: 19, type: "rest", t: "Rest" },
+      { d: "Wed", n: 20, type: "rest", t: "Rest" },
+      { d: "Thu", n: 21, type: "run", t: "✅ Run 1 Back — 1.32 mi (DONE)", det: "Diamond Heights. Pace 11:57/mi, elev 171ft, HR avg 144, max 163. Foot +90 min = 0-1/10.", metrics: ["1.32 mi", "11:57/mi", "Z2 HR 144"] },
+      { d: "Fri", n: 22, type: "strength", t: "Upper A Push + foot tests", det: "PT exercises start today. Calf raise + SL hop test. Then bench, shoulder press, fly, lateral raise, pushdown.", metrics: ["Upper A"] },
+      { d: "Sat", n: 23, type: "rest", t: "Rest + Daily PT", det: "Toe lift, doming, marble game, big toe stretch — start today, daily." },
+      { d: "Sun", n: 24, type: "run", t: "🟢 Run 2 — 25 min walk-jog (LOCKED)", det: "5 walk → [60s jog ~12:00 / 90s walk] x 7 → 2 walk cool. Metronome 155 spm. HR <150. FLAT only.", metrics: ["25 min", "~12:00/mi", "155 spm", "HR <150"], flag: "TODAY" },
+    ]
+  },
+  {
+    n: 2, dates: "May 25-31", phase: 1, startMonth: 4, startDay: 25,
+    title: "RTR Wk 2 — Daily PT Locks In",
+    summary: "First Mon-anchored week (10mg inject Mon). Wed + Sun runs.",
+    sessions: [
+      { d: "Mon", n: 25, type: "injection", t: "💉 Tirzepatide 10mg + Upper A Push", det: "Inject evening. Bench, shoulder press, fly, lateral, pushdown, dead bugs.", metrics: ["Mon anchor"] },
+      { d: "Tue", n: 26, type: "rest", t: "Rest + PT exercises" },
+      { d: "Wed", n: 27, type: "run", t: "Run — 25 min walk-jog (Wk 2 Wed)", det: "5 walk → 16 min [60s jog / 90s walk] x 6-7 → 4 cool. Day 2 post-injection = GI risk. FLAT.", metrics: ["25 min", "155 spm", "FLAT only"] },
+      { d: "Thu", n: 28, type: "strength", t: "🆕 Lower Strength A (first since Apr 12)", det: "RFE split squat 4×6/leg, goblet squat 2-sec pause, bent-knee seated calf raise (SOLEUS), SL calf raise, Pallof press.", metrics: ["Lower A"] },
+      { d: "Fri", n: 29, type: "rest", t: "Rest + PT" },
+      { d: "Sat", n: 30, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 31, type: "long", t: "Long Run — 30 min walk-jog", det: "5 walk → 20 min [60s jog / 90s walk] x 8 → 5 cool. Metronome 155. HR <150. FLAT.", metrics: ["30 min", "155 spm", "FLAT only"] },
+    ]
+  },
+  {
+    n: 3, dates: "Jun 1-7", phase: 1, startMonth: 5, startDay: 1,
+    title: "RTR Wk 3 — 3rd Run Intro",
+    summary: "Fri run added. Biggest volume jump of build (+25%).",
+    sessions: [
+      { d: "Mon", n: 1, type: "injection", t: "💉 10mg + Upper B Pull", det: "Pull-ups, cable row, face pull, incline DB curl, reverse fly, plank." },
+      { d: "Tue", n: 2, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 3, type: "run", t: "Run — 25 min easy", det: "5 walk → 18 min mostly continuous Z2 → 2 walk. Metronome 158 spm.", metrics: ["25 min", "158 spm", "HR <150"] },
+      { d: "Thu", n: 4, type: "strength", t: "Lower B Posterior + Plyo", det: "RDL 3-sec eccentric, bench, weighted pull-up, SL RDL, suitcase carry, pogo hops." },
+      { d: "Fri", n: 5, type: "run", t: "🆕 Run — 15-20 min easy (3rd run intro)", det: "3 walk → 12-15 min easy Z2 → 3 walk. \"Running on tired legs\" stimulus.", metrics: ["15-20 min", "158 spm"] },
+      { d: "Sat", n: 6, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 7, type: "long", t: "Long Run — 40 min → mostly continuous", det: "5 walk → 30 min jog (1-min walks every 8-10 if needed) → 5 cool.", metrics: ["40 min", "158 spm", "FLAT"] },
+    ]
+  },
+  {
+    n: 4, dates: "Jun 8-14", phase: 1, startMonth: 5, startDay: 8,
+    title: "RTR Wk 4 — First Quality",
+    summary: "First speed work: 4×1min cruise bursts. Mild rolling terrain OK.",
+    sessions: [
+      { d: "Mon", n: 8, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 9, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 10, type: "run", t: "Run — 25 min easy", det: "Continuous easy Z2. Cadence 158. Mild rolling OK if foot clean.", metrics: ["25 min", "158 spm"] },
+      { d: "Thu", n: 11, type: "strength", t: "Lower A — progression", det: "Calf raise: progress to 3×12 with 25 lb DB on knee (bent-knee seated)." },
+      { d: "Fri", n: 12, type: "quality", t: "🔥 QUALITY — 4×1min cruise (FIRST SPEED WORK)", det: "5 walk + 5 jog warm → 4× [1 min RPE 6-7 (HR 150-160) / 1 min walk] → 5 jog cool. FLAT only.", metrics: ["4×1min", "RPE 6-7", "FLAT"] },
+      { d: "Sat", n: 13, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 14, type: "long", t: "Long Run — 50 min continuous", det: "50 min continuous easy Z2. HR <150. Cadence 160 spm. Rolling OK.", metrics: ["50 min", "160 spm"] },
+    ]
+  },
+  {
+    n: 5, dates: "Jun 15-21", phase: 1, startMonth: 5, startDay: 15,
+    title: "RTR Wk 5 — First Mid-Run Gel",
+    summary: "Strides start (Wed). First in-run fueling on Sunday (1 Maurten @ min 25).",
+    sessions: [
+      { d: "Mon", n: 15, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 16, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 17, type: "run", t: "Run — 30 min easy + 4 strides", det: "5 walk → 25 min easy → 4× 20s strides → 2 walk. Cadence 158.", metrics: ["30 min", "4 strides"] },
+      { d: "Thu", n: 18, type: "strength", t: "Lower B + 🚨 Maurten 12-pack deadline" },
+      { d: "Fri", n: 19, type: "quality", t: "🔥 4×2min cruise", det: "5 walk + 5 jog → 4× [2 min RPE 6-7 / 1 min walk] → 5 jog cool. FLAT.", metrics: ["4×2min", "FLAT"] },
+      { d: "Sat", n: 20, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 21, type: "long", t: "Long Run — 60 min + 🍯 FIRST GEL", det: "60 min easy + 1 Maurten @ min 25. Cadence 158.", metrics: ["60 min", "1 gel @ 25"] },
+    ]
+  },
+  {
+    n: 6, dates: "Jun 22-28", phase: 1, startMonth: 5, startDay: 22,
+    title: "RTR Wk 6 — Volume Building",
+    summary: "2 gels in long run, 5 cruise reps, 6 strides on Wed.",
+    sessions: [
+      { d: "Mon", n: 22, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 23, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 24, type: "run", t: "Run — 30 min + 6 strides", metrics: ["30 min", "6 strides"] },
+      { d: "Thu", n: 25, type: "strength", t: "Lower A — calf raise progress 30 lb" },
+      { d: "Fri", n: 26, type: "quality", t: "🔥 5×2min cruise", metrics: ["5×2min"] },
+      { d: "Sat", n: 27, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 28, type: "long", t: "Long Run — 70 min + 🍯🍯 2 gels", det: "Min 25 + min 50.", metrics: ["70 min", "2 gels"] },
+    ]
+  },
+  {
+    n: 7, dates: "Jun 29 – Jul 5", phase: 1, startMonth: 5, startDay: 29,
+    title: "RTR Wk 7 — Rep Tempo + Dress Rehearsal #1",
+    summary: "First rep tempo (3×5min). First race-day breakfast B on Sunday's 80-min run.",
+    sessions: [
+      { d: "Mon", n: 29, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 30, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 1, type: "run", t: "Run — 35 min + 6 strides", metrics: ["35 min", "160 spm"] },
+      { d: "Thu", n: 2, type: "strength", t: "Lower B" },
+      { d: "Fri", n: 3, type: "quality", t: "🔥 3×5min REP TEMPO INTRO", det: "First rep tempo. RPE 7 (HR 160-170, ~10:30-10:45/mi). 2 min easy jog between.", metrics: ["3×5min", "tempo"] },
+      { d: "Sat", n: 4, type: "rest", t: "Rest + PT (🇺🇸)" },
+      { d: "Sun", n: 5, type: "long", t: "Long Run — 80 min + 🥯 BREAKFAST B (rehearsal #1)", det: "Race-day timing (T-2.5 hr breakfast B). 2 gels mid-run.", metrics: ["80 min", "🥯 B", "2 gels"] },
+    ]
+  },
+  {
+    n: 8, dates: "Jul 6-12", phase: 1, startMonth: 6, startDay: 6,
+    title: "RTR Wk 8 — Peak Pre-10K",
+    summary: "First real continuous tempo (15 min). Full race rehearsal on Sunday's 90-min long run.",
+    sessions: [
+      { d: "Mon", n: 6, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 7, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 8, type: "run", t: "Run — 30 min + 4 strides", metrics: ["30 min"] },
+      { d: "Thu", n: 9, type: "strength", t: "Lower A — calf 4×15 @ 35 lb" },
+      { d: "Fri", n: 10, type: "quality", t: "🔥 15 min CONTINUOUS TEMPO (first)", det: "Continuous, no breaks. HR 160-170, ~10:30/mi.", metrics: ["15 min tempo"] },
+      { d: "Sat", n: 11, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 12, type: "long", t: "Long Run — 90 min + 🥯 FULL RACE REHEARSAL #2", det: "Exact race kit. Vest, gels, singlet. 3 gels (min 25, 50, 75).", metrics: ["90 min", "Full kit", "3 gels"] },
+    ]
+  },
+  {
+    n: 9, dates: "Jul 13-19", phase: 1, startMonth: 6, startDay: 13,
+    title: "RTR Wk 9 — 7-Day Race Taper",
+    summary: "Volume drops, intensity stays sharp. Lower volume −30%.",
+    sessions: [
+      { d: "Mon", n: 13, type: "injection", t: "💉 10mg + Upper B (normal)" },
+      { d: "Tue", n: 14, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 15, type: "run", t: "Run — 25 min + 4 strides" },
+      { d: "Thu", n: 16, type: "strength", t: "Lower B LIGHT (3 sets)" },
+      { d: "Fri", n: 17, type: "quality", t: "🔥 2×5min @ tempo (taper)", metrics: ["2×5min", "sharp"] },
+      { d: "Sat", n: 18, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 19, type: "long", t: "Long Run — 60 min + 1 gel", det: "Taper long run — easy, not a test.", metrics: ["60 min"] },
+    ]
+  },
+  {
+    n: 10, dates: "Jul 20-26", phase: 1, startMonth: 6, startDay: 20,
+    title: "🏁 RACE WEEK — SF Marathon 10K",
+    summary: "Final taper. Upper LIGHT Mon. No Thu strength. Carb load Fri-Sat.",
+    raceWeek: true,
+    sessions: [
+      { d: "Mon", n: 20, type: "injection", t: "💉 10mg + Upper A LIGHT", det: "Cut volume 50%. 2 sets each, no failure." },
+      { d: "Tue", n: 21, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 22, type: "run", t: "Run — 25 min easy + 2 strides", det: "HR <140. Just turnover." },
+      { d: "Thu", n: 23, type: "rest", t: "🟡 NO STRENGTH — Rest + PT" },
+      { d: "Fri", n: 24, type: "run", t: "Shakeout — 15 min + 2 strides + 🍞 carb load starts", metrics: ["15 min"] },
+      { d: "Sat", n: 25, type: "rest", t: "Race Prep + bib pickup + carb load" },
+      { d: "Sun", n: 26, type: "race", t: "🏁 SF MARATHON 10K (target 70-75 min)", det: "T-3 hr Breakfast B. 0-2K easy (~12:00). 2-5K ~11:30. 5-8K hold + 2 gels. 8K-finish push if foot good.", metrics: ["10K", "target ~75 min", "B-RACE"] },
+    ]
+  },
+  {
+    n: 11, dates: "Jul 27 – Aug 2", phase: 2, startMonth: 6, startDay: 27,
+    title: "Recovery Wk — Post-10K Reset",
+    summary: "Mon REST. No quality this week. Pure aerobic.",
+    sessions: [
+      { d: "Mon", n: 27, type: "rest", t: "🛌 REST DAY + 💉 inject" },
+      { d: "Tue", n: 28, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 29, type: "run", t: "Run — 30 min easy (post-race first run)", det: "HR <145 — extra cushion." },
+      { d: "Thu", n: 30, type: "strength", t: "Lower A LIGHT" },
+      { d: "Fri", n: 31, type: "run", t: "Run — 25 min easy", det: "HR <145. No quality." },
+      { d: "Sat", n: 1, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 2, type: "long", t: "Long Run — 75 min easy", det: "No gels, no testing. Pure aerobic." },
+    ]
+  },
+  {
+    n: 12, dates: "Aug 3-9", phase: 2, startMonth: 7, startDay: 3,
+    title: "Rebuild Wk — Strides Return",
+    summary: "Resume normal volume. Strides back on Friday.",
+    sessions: [
+      { d: "Mon", n: 3, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 4, type: "rest", t: "Rest + PT" },
+      { d: "Wed", n: 5, type: "run", t: "Run — 35 min easy" },
+      { d: "Thu", n: 6, type: "strength", t: "Lower B (normal)" },
+      { d: "Fri", n: 7, type: "run", t: "Run — 30 min + 4 strides 🆕", metrics: ["strides return"] },
+      { d: "Sat", n: 8, type: "rest", t: "Rest + PT" },
+      { d: "Sun", n: 9, type: "long", t: "Long Run — 90 min + 2 gels" },
+    ]
+  },
+  {
+    n: 13, dates: "Aug 10-16", phase: 3, startMonth: 7, startDay: 10,
+    title: "Aerobic Base Wk 1 — 4 Runs/Wk Starts 🆕",
+    summary: "NEW TEMPLATE: Tue easy run added → 4 runs/wk.",
+    sessions: [
+      { d: "Mon", n: 10, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 11, type: "run", t: "🆕 Tue Run — 30 min easy (NEW DAY)" },
+      { d: "Wed", n: 12, type: "run", t: "Run — 35 min + 6 strides" },
+      { d: "Thu", n: 13, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 14, type: "quality", t: "🔥 4×3min Z3 / 2min jog", det: "Z3 = comfortably hard, NOT tempo." },
+      { d: "Sat", n: 15, type: "rest", t: "Rest + 🚨 hydration vest deadline" },
+      { d: "Sun", n: 16, type: "long", t: "Long Run — 1:45 + vest test", det: "Test new vest. 3 gels." },
+    ]
+  },
+  {
+    n: 14, dates: "Aug 17-23", phase: 3, startMonth: 7, startDay: 17,
+    title: "Aerobic Base Wk 2 — First 2-Hour",
+    summary: "Long run hits 2:00 for first time.",
+    sessions: [
+      { d: "Mon", n: 17, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 18, type: "run", t: "Run — 35 min easy" },
+      { d: "Wed", n: 19, type: "run", t: "Run — 40 min + 6 strides" },
+      { d: "Thu", n: 20, type: "strength", t: "Lower B" },
+      { d: "Fri", n: 21, type: "quality", t: "🔥 5×3min Z3" },
+      { d: "Sat", n: 22, type: "rest", t: "Rest" },
+      { d: "Sun", n: 23, type: "long", t: "Long Run — 2:00 easy (first 2-hour)" },
+    ]
+  },
+  {
+    n: 15, dates: "Aug 24-30", phase: 3, startMonth: 7, startDay: 24,
+    title: "Aerobic Base Wk 3 — Longer Z3 Blocks",
+    summary: "Z3 blocks grow to 8 min. Long run 2:15.",
+    sessions: [
+      { d: "Mon", n: 24, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 25, type: "run", t: "Run — 40 min easy" },
+      { d: "Wed", n: 26, type: "run", t: "Run — 40 min + 6 strides" },
+      { d: "Thu", n: 27, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 28, type: "quality", t: "🔥 3×8min Z3 / 3min jog", det: "Longer Z3 — progression." },
+      { d: "Sat", n: 29, type: "rest", t: "Rest" },
+      { d: "Sun", n: 30, type: "long", t: "Long Run — 2:15 easy + 5 gels" },
+    ]
+  },
+  {
+    n: 16, dates: "Aug 31 – Sep 6", phase: 3, startMonth: 7, startDay: 31,
+    title: "🟡 Cutback Wk — Recovery",
+    summary: "Volume down 35%. Race shoes ordered Tue.",
+    sessions: [
+      { d: "Mon", n: 31, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 1, type: "run", t: "Run — 30 min + 🚨 race shoes + Maurten 40-pack" },
+      { d: "Wed", n: 2, type: "run", t: "Run — 30 min easy" },
+      { d: "Thu", n: 3, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 4, type: "run", t: "Run — 20 min + 4 strides (no quality)" },
+      { d: "Sat", n: 5, type: "rest", t: "Rest" },
+      { d: "Sun", n: 6, type: "long", t: "Long Run — 1:30 easy (cutback)" },
+    ]
+  },
+  {
+    n: 17, dates: "Sep 7-13", phase: 3, startMonth: 8, startDay: 7,
+    title: "Aerobic Base Wk 5 — ⛰️ First Hills",
+    summary: "20-min continuous tempo. Long run ends with 4 hill reps.",
+    sessions: [
+      { d: "Mon", n: 7, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 8, type: "run", t: "Run — 40 min easy" },
+      { d: "Wed", n: 9, type: "run", t: "Run — 45 min + 6 strides" },
+      { d: "Thu", n: 10, type: "strength", t: "Lower B" },
+      { d: "Fri", n: 11, type: "quality", t: "🔥 20 min CONTINUOUS TEMPO" },
+      { d: "Sat", n: 12, type: "rest", t: "Rest" },
+      { d: "Sun", n: 13, type: "long", t: "Long Run — 2:15 + ⛰️ 4 hill reps", det: "First hills. Glen Canyon. 200m up RPE 7, walk down." },
+    ]
+  },
+  {
+    n: 18, dates: "Sep 14-20", phase: 4, startMonth: 8, startDay: 14,
+    title: "Marathon Build Wk 1 — Hills Weekly",
+    summary: "Build starts. Long run 2:30 + 4 hill reps.",
+    sessions: [
+      { d: "Mon", n: 14, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 15, type: "run", t: "Run — 40 min easy" },
+      { d: "Wed", n: 16, type: "run", t: "Run — 45 min + 6 strides" },
+      { d: "Thu", n: 17, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 18, type: "quality", t: "🔥 25 min continuous tempo" },
+      { d: "Sat", n: 19, type: "rest", t: "Rest" },
+      { d: "Sun", n: 20, type: "long", t: "Long Run — 2:30 + ⛰️ 4 hill reps" },
+    ]
+  },
+  {
+    n: 19, dates: "Sep 21-27", phase: 4, startMonth: 8, startDay: 21,
+    title: "Build Wk 2 — 🎯 MP Intro",
+    summary: "First marathon-pace segment (last 20 min of long run).",
+    sessions: [
+      { d: "Mon", n: 21, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 22, type: "run", t: "Run — 45 min easy" },
+      { d: "Wed", n: 23, type: "run", t: "Run — 45 min + 6 strides" },
+      { d: "Thu", n: 24, type: "strength", t: "Lower B" },
+      { d: "Fri", n: 25, type: "quality", t: "🔥 2×15min @ tempo / 3min jog" },
+      { d: "Sat", n: 26, type: "rest", t: "Rest" },
+      { d: "Sun", n: 27, type: "long", t: "🎯 Long Run — 2:45 w/ LAST 20 MIN @ MP", det: "MP target ~13:00-13:15/mi. Should feel comfortably steady, not tempo." },
+    ]
+  },
+  {
+    n: 20, dates: "Sep 28 – Oct 4", phase: 4, startMonth: 8, startDay: 28,
+    title: "Build Wk 3 — First 3-Hour",
+    summary: "Long run hits 3:00 / ~14 mi.",
+    sessions: [
+      { d: "Mon", n: 28, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 29, type: "run", t: "Run — 45 min easy" },
+      { d: "Wed", n: 30, type: "run", t: "Run — 50 min easy" },
+      { d: "Thu", n: 1, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 2, type: "quality", t: "🔥 30 min continuous tempo (longest yet)" },
+      { d: "Sat", n: 3, type: "rest", t: "Rest" },
+      { d: "Sun", n: 4, type: "long", t: "Long Run — 3:00 / ~14 mi (FIRST 3-HOUR)", det: "6 gels every 25 min." },
+    ]
+  },
+  {
+    n: 21, dates: "Oct 5-11", phase: 4, startMonth: 9, startDay: 5,
+    title: "🟡 Cutback Wk — Optional 20-Mi",
+    summary: "Default 1:45 cutback. Optional 20-mi training run if everything's green.",
+    sessions: [
+      { d: "Mon", n: 5, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 6, type: "run", t: "Run — 35 min easy" },
+      { d: "Wed", n: 7, type: "run", t: "Run — 35 min easy" },
+      { d: "Thu", n: 8, type: "strength", t: "Lower B" },
+      { d: "Fri", n: 9, type: "run", t: "Run — 20 min + 4 strides (no quality)" },
+      { d: "Sat", n: 10, type: "rest", t: "Rest" },
+      { d: "Sun", n: 11, type: "long", t: "Long Run — 1:45 easy OR optional 20-mi", det: "Option B: 20-mi flat home course (Marina-GG-Crissy + Lake Merced), ~4:30, 10 gels. Game-day call." },
+    ]
+  },
+  {
+    n: 22, dates: "Oct 12-18", phase: 4, startMonth: 9, startDay: 12,
+    title: "Build Wk 5 — Race Shoes Locked",
+    summary: "Race shoes broken in by today. Last MP block before peak.",
+    sessions: [
+      { d: "Mon", n: 12, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 13, type: "run", t: "Run — 50 min easy" },
+      { d: "Wed", n: 14, type: "run", t: "Run — 55 min + 6 strides + 🚨 race shoes broken in tomorrow" },
+      { d: "Thu", n: 15, type: "strength", t: "Lower A + 🚨 race shoes deadline" },
+      { d: "Fri", n: 16, type: "quality", t: "🔥 2×20min @ tempo / 3min jog" },
+      { d: "Sat", n: 17, type: "rest", t: "Rest" },
+      { d: "Sun", n: 18, type: "long", t: "🎯 Long Run — 3:00 w/ LAST 30 MIN @ MP" },
+    ]
+  },
+  {
+    n: 23, dates: "Oct 19-25", phase: 4, startMonth: 9, startDay: 19,
+    title: "Build Wk 6 — Last Hard Wk",
+    summary: "Longest tempo (35 min). Long run 3:15 / 16 mi with 45 min MP.",
+    sessions: [
+      { d: "Mon", n: 19, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 20, type: "run", t: "Run — 50 min easy" },
+      { d: "Wed", n: 21, type: "run", t: "Run — 60 min easy" },
+      { d: "Thu", n: 22, type: "strength", t: "Lower A" },
+      { d: "Fri", n: 23, type: "quality", t: "🔥 35 min CONTINUOUS TEMPO (longest)" },
+      { d: "Sat", n: 24, type: "rest", t: "Rest" },
+      { d: "Sun", n: 25, type: "long", t: "🎯 Long Run — 3:15 / 16 mi + LAST 45 MIN MP" },
+    ]
+  },
+  {
+    n: 24, dates: "Oct 26 – Nov 1", phase: 5, startMonth: 9, startDay: 26,
+    title: "🎯 PEAK Wk 1 — Long Run #1 Dress Rehearsal",
+    summary: "Full dress rehearsal: 3:30 / 18 mi with last 60 min MP. Rain gear tested.",
+    sessions: [
+      { d: "Mon", n: 26, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 27, type: "run", t: "Run — 45 min easy" },
+      { d: "Wed", n: 28, type: "run", t: "Run — 55 min + 6 strides" },
+      { d: "Thu", n: 29, type: "strength", t: "Lower B (normal — taper next wk)" },
+      { d: "Fri", n: 30, type: "quality", t: "🔥 2×15min tempo + 🚨 rain shell test" },
+      { d: "Sat", n: 31, type: "rest", t: "Rest + pre-peak prep" },
+      { d: "Sun", n: 1, type: "peak", t: "🎯 PEAK LR #1 — 3:30 / 18 mi w/ last 60 MIN MP + DRESS REHEARSAL", det: "T-3 hr Breakfast B. Full race kit. 10 gels. Closest you'll get to race day before race day." },
+    ]
+  },
+  {
+    n: 25, dates: "Nov 2-8", phase: 5, startMonth: 10, startDay: 2,
+    title: "🎯 PEAK Wk 2 — Long Run #2 Final Fueling Test",
+    summary: "Final big effort: 3:30 / 18-20 mi with last 60 min MP. 10-12 gels.",
+    sessions: [
+      { d: "Mon", n: 2, type: "injection", t: "💉 10mg + Upper A Push" },
+      { d: "Tue", n: 3, type: "run", t: "Run — 45 min easy" },
+      { d: "Wed", n: 4, type: "run", t: "Run — 50 min + 6 strides" },
+      { d: "Thu", n: 5, type: "strength", t: "Lower B (last normal-volume)" },
+      { d: "Fri", n: 6, type: "quality", t: "🔥 25 min continuous tempo" },
+      { d: "Sat", n: 7, type: "rest", t: "Rest" },
+      { d: "Sun", n: 8, type: "peak", t: "🎯 PEAK LR #2 — 3:30 / 18-20 mi + LAST 60 MIN MP", det: "Final fueling test. 10-12 gels. Practice taking them while running." },
+    ]
+  },
+  {
+    n: 26, dates: "Nov 9-15", phase: 6, startMonth: 10, startDay: 9,
+    title: "🟡 Taper Wk 1 — −25% Volume",
+    summary: "Quality stays, only volume drops. Lower A moderate.",
+    sessions: [
+      { d: "Mon", n: 9, type: "injection", t: "💉 10mg + Upper B Pull" },
+      { d: "Tue", n: 10, type: "run", t: "Run — 40 min easy" },
+      { d: "Wed", n: 11, type: "run", t: "Run — 45 min easy" },
+      { d: "Thu", n: 12, type: "strength", t: "Lower A (moderate)" },
+      { d: "Fri", n: 13, type: "quality", t: "🔥 20 min tempo + 4×3min MP" },
+      { d: "Sat", n: 14, type: "rest", t: "Rest" },
+      { d: "Sun", n: 15, type: "long", t: "Long Run — 2:00 easy" },
+    ]
+  },
+  {
+    n: 27, dates: "Nov 16-22", phase: 6, startMonth: 10, startDay: 16,
+    title: "🟡 Taper Wk 2 — −50% + Strength Taper",
+    summary: "Drop heavy compounds. BW + Pallof + dead bug only on Thu. Carb store priming.",
+    sessions: [
+      { d: "Mon", n: 16, type: "injection", t: "💉 10mg + Upper LIGHT" },
+      { d: "Tue", n: 17, type: "run", t: "Run — 30 min easy" },
+      { d: "Wed", n: 18, type: "run", t: "Run — 35 min + 4 strides" },
+      { d: "Thu", n: 19, type: "strength", t: "🟡 BW + Pallof + dead bug ONLY" },
+      { d: "Fri", n: 20, type: "quality", t: "🔥 15 min @ MP + 2×3min MP", det: "Should feel EASY — that's the taper working." },
+      { d: "Sat", n: 21, type: "rest", t: "Rest + 🍞 carb store priming" },
+      { d: "Sun", n: 22, type: "long", t: "Long Run — 1:15 easy" },
+    ]
+  },
+  {
+    n: 28, dates: "Nov 23-28", phase: 6, startMonth: 10, startDay: 23,
+    title: "🏁 RACE WEEK — −75% Volume",
+    raceWeek: true,
+    summary: "Gym closes after Mon. Carb load Tue-Sat. Travel to Seattle.",
+    sessions: [
+      { d: "Mon", n: 23, type: "injection", t: "💉 10mg + LAST GYM (light shake)" },
+      { d: "Tue", n: 24, type: "run", t: "Run — 25 min easy + 🍞 carb load STARTS" },
+      { d: "Wed", n: 25, type: "run", t: "Run — 25 min w/ 3×90s MP" },
+      { d: "Thu", n: 26, type: "rest", t: "🦃 Thanksgiving — REST + carb load" },
+      { d: "Fri", n: 27, type: "run", t: "Shakeout — 15 min" },
+      { d: "Sat", n: 28, type: "rest", t: "Race Prep — bib pickup + final carb load + early sleep" },
+    ]
+  },
+  {
+    n: 29, dates: "Sun Nov 29", phase: 6, startMonth: 10, startDay: 29, isRaceDay: true,
+    title: "🏁 SEATTLE MARATHON",
+    summary: "26.2 mi · Target 5:45 (~13:10/mi avg) · 10-12 Maurten gels · low 40s + likely rain",
+    sessions: [
+      { d: "Sun", n: 29, type: "race", t: "🏁 SEATTLE MARATHON — RACE DAY", det: "T-3 hr Breakfast B. Mile 1-2 deliberately easy. 3-13 settle 13:00-13:15/mi. Mile 23 WALK the climb. Mile 24-26.2 push if legs have it.", metrics: ["26.2 mi", "5:45 target", "10-12 gels"] },
+    ]
+  },
+];
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+function dateText(d) {
+  return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+}
+
+// Helper: which week does today fall into?
+function getCurrentWeekIndex() {
+  for (let i = 0; i < weeks.length; i++) {
+    const w = weeks[i];
+    const start = new Date(2026, w.startMonth, w.startDay);
+    const end = new Date(start); end.setDate(end.getDate() + 6);
+    if (TODAY >= start && TODAY <= end) return i;
+  }
+  return -1;
+}
+
+// Hero
+(function renderHero() {
+  const days = Math.max(0, Math.ceil((RACE_DATE - TODAY) / (86400000)));
+  document.getElementById("hero-days").textContent = days;
+  const wkIdx = getCurrentWeekIndex();
+  document.getElementById("hero-week").textContent = wkIdx >= 0 ? weeks[wkIdx].n : "—";
+})();
+
+// Phases
+(function renderPhases() {
+  const colors = ["#6d6d78", "#fc4c02", "#3498db", "#2ecc71", "#9333ea", "#f59e0b", "#db2777", "#dc2626"];
+  const phasesEl = document.getElementById("phases");
+  phasesEl.innerHTML = phases.map((p, i) => {
+    const isDone = p.status === "done";
+    const isRace = p.status === "race";
+    const isActive = (() => {
+      // active if today falls in date range — naive check by examining nearest week
+      const wkIdx = getCurrentWeekIndex();
+      if (wkIdx < 0) return false;
+      return weeks[wkIdx].phase === i;
+    })();
+    const cls = isDone ? "done" : isActive ? "active" : "";
+    const longStat = p.longRun ? `<div class="v">${p.longRun}</div><div class="l">Long run</div>` : (isRace ? `<div class="v">26.2</div><div class="l">miles</div>` : `<div class="v">—</div><div class="l">Bridge</div>`);
+    return `
+      <div class="phase ${cls}">
+        <div class="phase-bar" style="background:${colors[i]}"></div>
+        <div>
+          <div class="name">${p.name}${isDone ? " ✓" : ""}${isActive ? " · NOW" : ""}</div>
+          <div class="meta">${p.dates}${p.wks ? ` · ${p.wks} wks` : ""} · ${p.focus}</div>
+        </div>
+        <div class="stat">${longStat}</div>
+      </div>`;
+  }).join("");
+})();
+
+// Week cards
+function getWeekStatus(w) {
+  const start = new Date(2026, w.startMonth, w.startDay);
+  const end = new Date(start); end.setDate(end.getDate() + 6);
+  if (TODAY < start) return "upcoming";
+  if (TODAY > end) return "past";
+  return "current";
+}
+
+function renderWeeks(filter) {
+  const weeksEl = document.getElementById("weeks");
+  const filtered = filter === "all" ? weeks : weeks.filter(w => getWeekStatus(w) === filter);
+  weeksEl.innerHTML = filtered.map(w => {
+    const status = getWeekStatus(w);
+    const statusClass = status === "current" ? "current" : status === "past" ? "done" : "";
+    const raceClass = w.raceWeek ? " race-week" : "";
+    const isOpen = status === "current"; // auto-open the current week
+    return `
+      <article class="week ${statusClass}${raceClass}${isOpen ? " open" : ""}" data-week="${w.n}">
+        <header class="week-head" onclick="this.parentElement.classList.toggle('open')">
+          <div class="week-num">${w.n}</div>
+          <div>
+            <div class="week-title">${w.title}</div>
+            <div class="week-meta">${w.dates} · ${w.summary || ""}</div>
+          </div>
+          <div class="week-chevron">›</div>
+        </header>
+        <div class="week-body">
+          ${w.sessions.map(s => `
+            <div class="session">
+              <div class="session-day">
+                <div class="dow">${s.d}</div>
+                <div class="num">${s.n}</div>
+              </div>
+              <div>
+                <span class="session-type ${s.type}">${s.type}</span>
+                ${s.flag ? `<span class="session-type" style="background:var(--orange);color:#fff;margin-left:4px;">${s.flag}</span>` : ""}
+                <div class="session-title">${s.t}</div>
+                ${s.det ? `<div class="session-detail">${s.det}</div>` : ""}
+                ${s.metrics ? `<div class="session-metrics">${s.metrics.map(m => `<span class="metric">${m}</span>`).join("")}</div>` : ""}
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </article>`;
+  }).join("");
+}
+renderWeeks("all");
+document.getElementById("week-count").textContent = weeks.length + " weeks";
+
+// Filter buttons
+document.querySelectorAll(".btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderWeeks(btn.dataset.filter);
+  });
+});
+
+// Today / Up next card
+(function renderToday() {
+  // find current or next session
+  const wkIdx = getCurrentWeekIndex();
+  const todayDay = TODAY.getDate();
+  const todayMonth = TODAY.getMonth();
+  let chosen = null, chosenWk = null, isToday = false;
+  // Search current week first
+  if (wkIdx >= 0) {
+    const w = weeks[wkIdx];
+    chosen = w.sessions.find(s => s.n === todayDay && (s.d === ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][TODAY.getDay()] || true));
+    if (chosen) { chosenWk = w; isToday = true; }
+  }
+  // If no today session, find next upcoming
+  if (!chosen) {
+    outer: for (let i = Math.max(0, wkIdx); i < weeks.length; i++) {
+      const w = weeks[i];
+      const start = new Date(2026, w.startMonth, w.startDay);
+      for (let j = 0; j < w.sessions.length; j++) {
+        const s = w.sessions[j];
+        const sDate = new Date(start); sDate.setDate(start.getDate() + j);
+        if (sDate >= TODAY) { chosen = s; chosenWk = w; break outer; }
+      }
+    }
+  }
+  if (!chosen) {
+    document.getElementById("today-banner-label").textContent = "DONE";
+    document.getElementById("today-title").textContent = "Plan complete. Congrats. 🏁";
+    return;
+  }
+  document.getElementById("today-banner-label").textContent = isToday ? "TODAY" : "UP NEXT";
+  document.getElementById("today-pill").textContent = chosenWk.title.replace(/^[^—]+—\s*/, "") || ("Wk " + chosenWk.n);
+  document.getElementById("today-title").textContent = chosen.t;
+  document.getElementById("today-sub").textContent = chosenWk.dates + " · " + chosen.d + " " + chosen.n + " · Wk " + chosenWk.n;
+  document.getElementById("today-detail").textContent = chosen.det || "";
+  document.getElementById("today-metrics").innerHTML = (chosen.metrics || []).map(m => `<span class="metric hot">${m}</span>`).join("");
+})();
+
+// Gear
+(function renderGear() {
+  document.getElementById("gear-list").innerHTML = gear.map(g => `
+    <div class="gear">
+      <div class="gear-icon">${g.item.split(' ')[0]}</div>
+      <div>
+        <div class="gear-item">${g.item.replace(/^\S+ /, '')}</div>
+        <div class="gear-note">${g.note} · ${g.phase}</div>
+      </div>
+      <div class="gear-date">${g.date}</div>
+    </div>
+  `).join("");
+})();
+
+// Footer
+document.getElementById("updated").textContent = "Updated " + new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+</script>
+
+</body>
+</html>

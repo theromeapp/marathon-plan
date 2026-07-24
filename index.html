@@ -495,430 +495,62 @@
 const RACE_DATE = new Date(2026, 10, 29); // Nov 29 2026
 const TODAY = new Date(); TODAY.setHours(0,0,0,0);
 
+  /* DATA:BEGIN — generated from data/plan.json by scripts/build_surfaces.py. DO NOT hand-edit. */
+
 const phases = [
-  { name: "0. Bridge", dates: "Apr 20 – May 20", wks: 4, focus: "Cut, fueling, sleep, upper strength", status: "done" },
-  { name: "1. RTR + Travel-Adjusted Base", dates: "May 21 – Jul 26", wks: 10, focus: "Walk-jog → continuous; cruise intervals. NZ trip Jun 29–Jul 11 = maintenance gap. No race.", longRun: "25 min → 70 min" },
-  { name: "2. Aerobic Continuation", dates: "Jul 27 – Aug 9", wks: 2, focus: "Resume normal volume, strides + cruise continue, no race-recovery dip", longRun: "75 → 95 min" },
-  { name: "3. Aerobic Base", dates: "Aug 10 – Sep 13", wks: 5, focus: "4 runs/wk Z2, tempo, first hills", longRun: "95 min → 2:15" },
-  { name: "4. Marathon Build", dates: "Sep 14 – Oct 25", wks: 6, focus: "4 runs/wk, 1 quality, MP segments in long run", longRun: "2:15 → 3:15" },
-  { name: "5. Peak", dates: "Oct 26 – Nov 8", wks: 2, focus: "Last hard block. Full dress rehearsals", longRun: "3:30 / 18-20 mi" },
-  { name: "6. Taper", dates: "Nov 9 – 28", wks: 3, focus: "−25/−50/−75% volume. Intensity held. Carb load wk 3", longRun: "2:00 → 1:00" },
-  { name: "RACE", dates: "Sun Nov 29", wks: 0, focus: "Seattle Marathon — 26.2 mi · target 5:45", status: "race" },
+  {"name": "0. Bridge", "dates": "Apr 20 – May 20", "wks": 4, "focus": "Cut, fueling, sleep, upper strength", "status": "done"},
+  {"name": "1. RTR + Disrupted Base", "dates": "May 21 – Jul 26", "wks": 10, "focus": "Return to running, NZ maintenance, then Indiana/onboarding disruption. Jul 23 is the real restart.", "longRun": "25 → 45 min"},
+  {"name": "2. Re-entry + Consistency", "dates": "Jul 27 – Aug 23", "wks": 4, "focus": "Three runs → four. Three lifts. All easy except strides; build adherence first.", "longRun": "50 → 80 min"},
+  {"name": "3. Aerobic Base", "dates": "Aug 24 – Sep 27", "wks": 5, "focus": "Four runs, controlled cruise work, first descents and hill-walk practice.", "longRun": "95 → 140 min"},
+  {"name": "4. Marathon Build", "dates": "Sep 28 – Oct 25", "wks": 4, "focus": "Long-run durability, hills, fueling, one cutback, marathon-effort finishes.", "longRun": "2:35 → 3:00"},
+  {"name": "5. Peak + Absorb", "dates": "Oct 26 – Nov 8", "wks": 2, "focus": "One 3:30 hilly dress rehearsal, then absorb it. No second peak gamble.", "longRun": "3:30 → 2:30"},
+  {"name": "6. Taper", "dates": "Nov 9 – 28", "wks": 3, "focus": "Disciplined volume reduction, rhythm retained, heavy lifting removed.", "longRun": "2:00 → 1:00"},
+  {"name": "RACE", "dates": "Sun Nov 29", "wks": 0, "focus": "Seattle Marathon — finish-ready execution; 5:45 assessed after dress rehearsal", "status": "race"},
 ];
 
 const gear = [
-  { date: "Jun 18", item: "🍯 12-pack Maurten 100 gels", note: "Gut training start", phase: "Wk 5" },
-  { date: "Aug 15", item: "🎒 Hydration vest", note: "Test on Wk 13 long run", phase: "Wk 13" },
-  { date: "Sep 1", item: "👟 Race shoes ordered", note: "Hoka Bondi / Brooks Glycerin / Asics Nimbus", phase: "Wk 16" },
-  { date: "Sep 1", item: "🍯 Maurten bulk order (40 gels)", note: "For build + race", phase: "Wk 16" },
-  { date: "Oct 15", item: "👟 Race shoes broken in", note: "50+ mi by today", phase: "Wk 22" },
-  { date: "Oct 30", item: "🌧️ Rain gear tested", note: "Seattle = low 40s + rain", phase: "Wk 24" },
-  { date: "Nov 27-28", item: "🎽 Race kit laid out", note: "Bib pinned, vest filled, gels packed", phase: "Race wk" },
+  {"date": "Jun 18", "item": "🍯 12-pack Maurten 100 gels", "note": "Gut training start", "phase": "Wk 5"},
+  {"date": "Aug 15", "item": "🎒 Hydration vest", "note": "Test on Wk 13 long run", "phase": "Wk 13"},
+  {"date": "Sep 1", "item": "👟 Race shoes ordered", "note": "Hoka Bondi / Brooks Glycerin / Asics Nimbus", "phase": "Wk 16"},
+  {"date": "Sep 1", "item": "🍯 Maurten bulk order (40 gels)", "note": "For build + race", "phase": "Wk 16"},
+  {"date": "Oct 15", "item": "👟 Race shoes broken in", "note": "50+ mi by today", "phase": "Wk 22"},
+  {"date": "Oct 30", "item": "🌧️ Rain gear tested", "note": "Seattle = low 40s + rain", "phase": "Wk 24"},
+  {"date": "Nov 27-28", "item": "🎽 Race kit laid out", "note": "Bib pinned, vest filled, gels packed", "phase": "Race wk"},
 ];
 
-/* Weeks — most data lives here. Each session has type, day-letter, title, detail, metrics, and optional flag */
 const weeks = [
-  {
-    n: 1, dates: "May 18-24", phase: 1, startMonth: 4, startDay: 18,
-    title: "RTR Wk 1 — Run 1 Back",
-    summary: "Foot cleared by ortho. Run 1 done Thu (1.32 mi outdoor, 11:57/mi). Sun = Run 2.",
-    sessions: [
-      { d: "Mon", n: 18, type: "rest", t: "Rest", det: "Pre-clearance day." },
-      { d: "Tue", n: 19, type: "rest", t: "Rest" },
-      { d: "Wed", n: 20, type: "rest", t: "Rest" },
-      { d: "Thu", n: 21, type: "run", t: "✅ Run 1 Back — 1.32 mi (DONE)", det: "Diamond Heights. Pace 11:57/mi, elev 171ft, HR avg 144, max 163. Foot +90 min = 0-1/10.", metrics: ["1.32 mi", "11:57/mi", "Z2 HR 144"] },
-      { d: "Fri", n: 22, type: "strength", t: "Upper A Push + foot tests", det: "PT exercises start today. Calf raise + SL hop test. Then bench, shoulder press, fly, lateral raise, pushdown.", metrics: ["Upper A"] },
-      { d: "Sat", n: 23, type: "rest", t: "Rest + Daily PT", det: "Toe lift, doming, marble game, big toe stretch — start today, daily." },
-      { d: "Sun", n: 24, type: "run", t: "🟢 Run 2 — 25 min walk-jog (LOCKED)", det: "5 walk → [60s jog ~12:00 / 90s walk] x 7 → 2 walk cool. Metronome 155 spm. HR <150. FLAT only.", metrics: ["25 min", "~12:00/mi", "155 spm", "HR <150"], flag: "TODAY" },
-    ]
-  },
-  {
-    n: 2, dates: "May 25-31", phase: 1, startMonth: 4, startDay: 25,
-    title: "RTR Wk 2 — Daily PT Locks In",
-    summary: "First Mon-anchored week (10mg inject Mon). Wed + Sun runs.",
-    sessions: [
-      { d: "Mon", n: 25, type: "injection", t: "💉 Tirzepatide 10mg + Upper A Push", det: "Inject evening. Bench, shoulder press, fly, lateral, pushdown, dead bugs.", metrics: ["Mon anchor"] },
-      { d: "Tue", n: 26, type: "rest", t: "Rest + PT exercises" },
-      { d: "Wed", n: 27, type: "run", t: "Run — 25 min walk-jog (Wk 2 Wed)", det: "5 walk → 16 min [60s jog / 90s walk] x 6-7 → 4 cool. Day 2 post-injection = GI risk. FLAT.", metrics: ["25 min", "155 spm", "FLAT only"] },
-      { d: "Thu", n: 28, type: "strength", t: "🆕 Lower Strength A (first since Apr 12)", det: "RFE split squat 4×6/leg, goblet squat 2-sec pause, bent-knee seated calf raise (SOLEUS), SL calf raise, Pallof press.", metrics: ["Lower A"] },
-      { d: "Fri", n: 29, type: "rest", t: "Rest + PT" },
-      { d: "Sat", n: 30, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 31, type: "long", t: "Long Run — 30 min walk-jog", det: "5 walk → 20 min [60s jog / 90s walk] x 8 → 5 cool. Metronome 155. HR <150. FLAT.", metrics: ["30 min", "155 spm", "FLAT only"] },
-    ]
-  },
-  {
-    n: 3, dates: "Jun 1-7", phase: 1, startMonth: 5, startDay: 1,
-    title: "RTR Wk 3 — 3rd Run Intro",
-    summary: "Fri run added. Biggest volume jump of build (+25%).",
-    sessions: [
-      { d: "Mon", n: 1, type: "injection", t: "💉 10mg + Upper B Pull", det: "Pull-ups, cable row, face pull, incline DB curl, reverse fly, plank." },
-      { d: "Tue", n: 2, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 3, type: "run", t: "Run — 25 min easy", det: "5 walk → 18 min mostly continuous Z2 → 2 walk. Metronome 158 spm.", metrics: ["25 min", "158 spm", "HR <150"] },
-      { d: "Thu", n: 4, type: "strength", t: "Lower B Posterior + Plyo", det: "RDL 3-sec eccentric, bench, weighted pull-up, SL RDL, suitcase carry, pogo hops." },
-      { d: "Fri", n: 5, type: "run", t: "🆕 Run — 15-20 min easy (3rd run intro)", det: "3 walk → 12-15 min easy Z2 → 3 walk. \"Running on tired legs\" stimulus.", metrics: ["15-20 min", "158 spm"] },
-      { d: "Sat", n: 6, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 7, type: "long", t: "Long Run — 40 min → mostly continuous", det: "5 walk → 30 min jog (1-min walks every 8-10 if needed) → 5 cool.", metrics: ["40 min", "158 spm", "FLAT"] },
-    ]
-  },
-  {
-    n: 4, dates: "Jun 8-14", phase: 1, startMonth: 5, startDay: 8,
-    title: "RTR Wk 4 — First Quality",
-    summary: "First speed work: 4×1min cruise bursts. Mild rolling terrain OK.",
-    sessions: [
-      { d: "Mon", n: 8, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 9, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 10, type: "run", t: "Run — 25 min easy", det: "Continuous easy Z2. Cadence 158. Mild rolling OK if foot clean.", metrics: ["25 min", "158 spm"] },
-      { d: "Thu", n: 11, type: "strength", t: "Lower A — progression", det: "Calf raise: progress to 3×12 with 25 lb DB on knee (bent-knee seated)." },
-      { d: "Fri", n: 12, type: "quality", t: "🔥 QUALITY — 4×1min cruise (FIRST SPEED WORK)", det: "5 walk + 5 jog warm → 4× [1 min RPE 6-7 (HR 150-160) / 1 min walk] → 5 jog cool. FLAT only.", metrics: ["4×1min", "RPE 6-7", "FLAT"] },
-      { d: "Sat", n: 13, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 14, type: "long", t: "Long Run — 50 min continuous", det: "50 min continuous easy Z2. HR <150. Cadence 160 spm. Rolling OK.", metrics: ["50 min", "160 spm"] },
-    ]
-  },
-  {
-    n: 5, dates: "Jun 15-21", phase: 1, startMonth: 5, startDay: 15,
-    title: "RTR Wk 5 — First Mid-Run Gel",
-    summary: "Strides start (Wed). First in-run fueling on Sunday (1 Maurten @ min 25).",
-    sessions: [
-      { d: "Mon", n: 15, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 16, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 17, type: "run", t: "Run — 30 min easy + 4 strides", det: "5 walk → 25 min easy → 4× 20s strides → 2 walk. Cadence 158.", metrics: ["30 min", "4 strides"] },
-      { d: "Thu", n: 18, type: "strength", t: "Lower B + 🚨 Maurten 12-pack deadline" },
-      { d: "Fri", n: 19, type: "quality", t: "🔥 4×2min cruise", det: "5 walk + 5 jog → 4× [2 min RPE 6-7 / 1 min walk] → 5 jog cool. FLAT.", metrics: ["4×2min", "FLAT"] },
-      { d: "Sat", n: 20, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 21, type: "long", t: "Long Run — 60 min + 🍯 FIRST GEL", det: "60 min easy + 1 Maurten @ min 25. Cadence 158.", metrics: ["60 min", "1 gel @ 25"] },
-    ]
-  },
-  {
-    n: 6, dates: "Jun 22-28", phase: 1, startMonth: 5, startDay: 22,
-    title: "RTR Wk 6 — Volume Building",
-    summary: "2 gels in long run, 5 cruise reps, 6 strides on Wed.",
-    sessions: [
-      { d: "Mon", n: 22, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 23, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 24, type: "run", t: "Run — 30 min + 6 strides", metrics: ["30 min", "6 strides"] },
-      { d: "Thu", n: 25, type: "strength", t: "Lower A — calf raise progress 30 lb" },
-      { d: "Fri", n: 26, type: "quality", t: "🔥 5×2min cruise", metrics: ["5×2min"] },
-      { d: "Sat", n: 27, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 28, type: "long", t: "Long Run — 70 min + 🍯🍯 2 gels", det: "Min 25 + min 50.", metrics: ["70 min", "2 gels"] },
-    ]
-  },
-  {
-    n: 7, dates: "Jun 29 – Jul 5", phase: 1, startMonth: 5, startDay: 29,
-    title: "🛫 NZ TRAVEL Wk 1 — Maintenance",
-    summary: "NZ trip starts Jun 29. Maintenance only: 3 runs 25-30 min, bodyweight S&C, daily calf raises. No progression.",
-    sessions: [
-      { d: "Mon", n: 29, type: "injection", t: "💉 10mg + Bodyweight Upper (hotel)" },
-      { d: "Tue", n: 30, type: "rest", t: "Rest + travel day" },
-      { d: "Wed", n: 1, type: "run", t: "NZ maintenance run 1 — 25 min easy", metrics: ["25 min"] },
-      { d: "Thu", n: 2, type: "strength", t: "Bodyweight Lower (hotel)" },
-      { d: "Fri", n: 3, type: "run", t: "NZ maintenance run 2 — 25 min easy", metrics: ["25 min"] },
-      { d: "Sat", n: 4, type: "rest", t: "Calf raises daily — 15 single-leg seated" },
-      { d: "Sun", n: 5, type: "run", t: "NZ maintenance run 3 — 30 min easy run/walk", metrics: ["30 min"] },
-    ]
-  },
-  {
-    n: 8, dates: "Jul 6-12", phase: 1, startMonth: 6, startDay: 6,
-    title: "🛬 NZ TRAVEL Wk 2 — Return Jul 11",
-    summary: "Last NZ week. Return travel Jul 11. Sunday = rest + jet-lag recovery, no run.",
-    sessions: [
-      { d: "Mon", n: 6, type: "injection", t: "💉 10mg + Bodyweight Upper (hotel)" },
-      { d: "Tue", n: 7, type: "rest", t: "Rest + calf raises daily" },
-      { d: "Wed", n: 8, type: "run", t: "NZ maintenance run 4 — 25 min easy", metrics: ["25 min"] },
-      { d: "Thu", n: 9, type: "strength", t: "Bodyweight Lower (hotel)" },
-      { d: "Fri", n: 10, type: "run", t: "NZ maintenance run 5 — 25 min easy", metrics: ["25 min"] },
-      { d: "Sat", n: 11, type: "rest", t: "🛬 Travel home — full rest day" },
-      { d: "Sun", n: 12, type: "rest", t: "Jet-lag recovery — 20 min walk OK, no run" },
-    ]
-  },
-  {
-    n: 9, dates: "Jul 13-19", phase: 1, startMonth: 6, startDay: 13,
-    title: "Post-NZ Rebuild — Re-entry Wk",
-    summary: "Rebuild continuous-easy tolerance. No quality. Strength returns normal.",
-    sessions: [
-      { d: "Mon", n: 13, type: "injection", t: "💉 10mg + Upper B (normal — first lift back)" },
-      { d: "Tue", n: 14, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 15, type: "run", t: "Run — 25 min easy (re-entry)", metrics: ["25 min"] },
-      { d: "Thu", n: 16, type: "strength", t: "Lower B (normal)" },
-      { d: "Fri", n: 17, type: "run", t: "Run — 20 min easy + 4 strides", metrics: ["20 min", "4 strides"] },
-      { d: "Sat", n: 18, type: "rest", t: "Rest + long-run prep" },
-      { d: "Sun", n: 19, type: "long", t: "Long Run — 45 min walk-jog rebuild", det: "2 min run / 60s walk × 12. No gels. Pure aerobic.", metrics: ["45 min", "rebuild"] },
-    ]
-  },
-  {
-    n: 10, dates: "Jul 20-26", phase: 1, startMonth: 6, startDay: 20,
-    title: "Post-NZ Resume — Wk 5-equivalent",
-    summary: "Cruise reps return. Strength normal Mon/Thu. SF 10K dropped Jun 8 — no race week.",
-    sessions: [
-      { d: "Mon", n: 20, type: "injection", t: "💉 10mg + Upper A (normal)" },
-      { d: "Tue", n: 21, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 22, type: "run", t: "Run — 30 min easy + 4 strides" },
-      { d: "Thu", n: 23, type: "strength", t: "Lower A (normal)" },
-      { d: "Fri", n: 24, type: "quality", t: "🔥 4×2 min cruise / 1 min walk", det: "RPE 6-7. HR 150-160. Wk 5-equivalent cruise rebuild.", metrics: ["4×2min", "cruise"] },
-      { d: "Sat", n: 25, type: "rest", t: "Rest + long-run prep" },
-      { d: "Sun", n: 26, type: "long", t: "Long Run — 60 min easy + 1 gel", det: "First gel post-NZ rebuild. Pure aerobic.", metrics: ["60 min", "1 gel"] },
-    ]
-  },
-  {
-    n: 11, dates: "Jul 27 – Aug 2", phase: 2, startMonth: 6, startDay: 27,
-    title: "Recovery Wk — Post-10K Reset",
-    summary: "Mon REST. No quality this week. Pure aerobic.",
-    sessions: [
-      { d: "Mon", n: 27, type: "rest", t: "🛌 REST DAY + 💉 inject" },
-      { d: "Tue", n: 28, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 29, type: "run", t: "Run — 30 min easy (post-race first run)", det: "HR <145 — extra cushion." },
-      { d: "Thu", n: 30, type: "strength", t: "Lower A LIGHT" },
-      { d: "Fri", n: 31, type: "run", t: "Run — 25 min easy", det: "HR <145. No quality." },
-      { d: "Sat", n: 1, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 2, type: "long", t: "Long Run — 75 min easy", det: "No gels, no testing. Pure aerobic." },
-    ]
-  },
-  {
-    n: 12, dates: "Aug 3-9", phase: 2, startMonth: 7, startDay: 3,
-    title: "Rebuild Wk — Strides Return",
-    summary: "Resume normal volume. Strides back on Friday.",
-    sessions: [
-      { d: "Mon", n: 3, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 4, type: "rest", t: "Rest + PT" },
-      { d: "Wed", n: 5, type: "run", t: "Run — 35 min easy" },
-      { d: "Thu", n: 6, type: "strength", t: "Lower B (normal)" },
-      { d: "Fri", n: 7, type: "run", t: "Run — 30 min + 4 strides 🆕", metrics: ["strides return"] },
-      { d: "Sat", n: 8, type: "rest", t: "Rest + PT" },
-      { d: "Sun", n: 9, type: "long", t: "Long Run — 90 min + 2 gels" },
-    ]
-  },
-  {
-    n: 13, dates: "Aug 10-16", phase: 3, startMonth: 7, startDay: 10,
-    title: "Aerobic Base Wk 1 — 4 Runs/Wk Starts 🆕",
-    summary: "NEW TEMPLATE: Tue easy run added → 4 runs/wk.",
-    sessions: [
-      { d: "Mon", n: 10, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 11, type: "run", t: "🆕 Tue Run — 30 min easy (NEW DAY)" },
-      { d: "Wed", n: 12, type: "run", t: "Run — 35 min + 6 strides" },
-      { d: "Thu", n: 13, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 14, type: "quality", t: "🔥 4×3min Z3 / 2min jog", det: "Z3 = comfortably hard, NOT tempo." },
-      { d: "Sat", n: 15, type: "rest", t: "Rest + 🚨 hydration vest deadline" },
-      { d: "Sun", n: 16, type: "long", t: "Long Run — 1:45 + vest test", det: "Test new vest. 3 gels." },
-    ]
-  },
-  {
-    n: 14, dates: "Aug 17-23", phase: 3, startMonth: 7, startDay: 17,
-    title: "Aerobic Base Wk 2 — First 2-Hour",
-    summary: "Long run hits 2:00 for first time.",
-    sessions: [
-      { d: "Mon", n: 17, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 18, type: "run", t: "Run — 35 min easy" },
-      { d: "Wed", n: 19, type: "run", t: "Run — 40 min + 6 strides" },
-      { d: "Thu", n: 20, type: "strength", t: "Lower B" },
-      { d: "Fri", n: 21, type: "quality", t: "🔥 5×3min Z3" },
-      { d: "Sat", n: 22, type: "rest", t: "Rest" },
-      { d: "Sun", n: 23, type: "long", t: "Long Run — 2:00 easy (first 2-hour)" },
-    ]
-  },
-  {
-    n: 15, dates: "Aug 24-30", phase: 3, startMonth: 7, startDay: 24,
-    title: "Aerobic Base Wk 3 — Longer Z3 Blocks",
-    summary: "Z3 blocks grow to 8 min. Long run 2:15.",
-    sessions: [
-      { d: "Mon", n: 24, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 25, type: "run", t: "Run — 40 min easy" },
-      { d: "Wed", n: 26, type: "run", t: "Run — 40 min + 6 strides" },
-      { d: "Thu", n: 27, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 28, type: "quality", t: "🔥 3×8min Z3 / 3min jog", det: "Longer Z3 — progression." },
-      { d: "Sat", n: 29, type: "rest", t: "Rest" },
-      { d: "Sun", n: 30, type: "long", t: "Long Run — 2:15 easy + 5 gels" },
-    ]
-  },
-  {
-    n: 16, dates: "Aug 31 – Sep 6", phase: 3, startMonth: 7, startDay: 31,
-    title: "🟡 Cutback Wk — Recovery",
-    summary: "Volume down 35%. Race shoes ordered Tue.",
-    sessions: [
-      { d: "Mon", n: 31, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 1, type: "run", t: "Run — 30 min + 🚨 race shoes + Maurten 40-pack" },
-      { d: "Wed", n: 2, type: "run", t: "Run — 30 min easy" },
-      { d: "Thu", n: 3, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 4, type: "run", t: "Run — 20 min + 4 strides (no quality)" },
-      { d: "Sat", n: 5, type: "rest", t: "Rest" },
-      { d: "Sun", n: 6, type: "long", t: "Long Run — 1:30 easy (cutback)" },
-    ]
-  },
-  {
-    n: 17, dates: "Sep 7-13", phase: 3, startMonth: 8, startDay: 7,
-    title: "Aerobic Base Wk 5 — ⛰️ First Hills",
-    summary: "20-min continuous tempo. Long run ends with 4 hill reps.",
-    sessions: [
-      { d: "Mon", n: 7, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 8, type: "run", t: "Run — 40 min easy" },
-      { d: "Wed", n: 9, type: "run", t: "Run — 45 min + 6 strides" },
-      { d: "Thu", n: 10, type: "strength", t: "Lower B" },
-      { d: "Fri", n: 11, type: "quality", t: "🔥 20 min CONTINUOUS TEMPO" },
-      { d: "Sat", n: 12, type: "rest", t: "Rest" },
-      { d: "Sun", n: 13, type: "long", t: "Long Run — 2:15 + ⛰️ 4 hill reps", det: "First hills. Glen Canyon. 200m up RPE 7, walk down." },
-    ]
-  },
-  {
-    n: 18, dates: "Sep 14-20", phase: 4, startMonth: 8, startDay: 14,
-    title: "Marathon Build Wk 1 — Hills Weekly",
-    summary: "Build starts. Long run 2:30 + 4 hill reps.",
-    sessions: [
-      { d: "Mon", n: 14, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 15, type: "run", t: "Run — 40 min easy" },
-      { d: "Wed", n: 16, type: "run", t: "Run — 45 min + 6 strides" },
-      { d: "Thu", n: 17, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 18, type: "quality", t: "🔥 25 min continuous tempo" },
-      { d: "Sat", n: 19, type: "rest", t: "Rest" },
-      { d: "Sun", n: 20, type: "long", t: "Long Run — 2:30 + ⛰️ 4 hill reps" },
-    ]
-  },
-  {
-    n: 19, dates: "Sep 21-27", phase: 4, startMonth: 8, startDay: 21,
-    title: "Build Wk 2 — 🎯 MP Intro",
-    summary: "First marathon-pace segment (last 20 min of long run).",
-    sessions: [
-      { d: "Mon", n: 21, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 22, type: "run", t: "Run — 45 min easy" },
-      { d: "Wed", n: 23, type: "run", t: "Run — 45 min + 6 strides" },
-      { d: "Thu", n: 24, type: "strength", t: "Lower B" },
-      { d: "Fri", n: 25, type: "quality", t: "🔥 2×15min @ tempo / 3min jog" },
-      { d: "Sat", n: 26, type: "rest", t: "Rest" },
-      { d: "Sun", n: 27, type: "long", t: "🎯 Long Run — 2:45 w/ LAST 20 MIN @ MP", det: "MP target ~13:00-13:15/mi. Should feel comfortably steady, not tempo." },
-    ]
-  },
-  {
-    n: 20, dates: "Sep 28 – Oct 4", phase: 4, startMonth: 8, startDay: 28,
-    title: "Build Wk 3 — First 3-Hour",
-    summary: "Long run hits 3:00 / ~14 mi.",
-    sessions: [
-      { d: "Mon", n: 28, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 29, type: "run", t: "Run — 45 min easy" },
-      { d: "Wed", n: 30, type: "run", t: "Run — 50 min easy" },
-      { d: "Thu", n: 1, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 2, type: "quality", t: "🔥 30 min continuous tempo (longest yet)" },
-      { d: "Sat", n: 3, type: "rest", t: "Rest" },
-      { d: "Sun", n: 4, type: "long", t: "Long Run — 3:00 / ~14 mi (FIRST 3-HOUR)", det: "6 gels every 25 min." },
-    ]
-  },
-  {
-    n: 21, dates: "Oct 5-11", phase: 4, startMonth: 9, startDay: 5,
-    title: "🟡 Cutback Wk — Optional 20-Mi",
-    summary: "Default 1:45 cutback. Optional 20-mi training run if everything's green.",
-    sessions: [
-      { d: "Mon", n: 5, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 6, type: "run", t: "Run — 35 min easy" },
-      { d: "Wed", n: 7, type: "run", t: "Run — 35 min easy" },
-      { d: "Thu", n: 8, type: "strength", t: "Lower B" },
-      { d: "Fri", n: 9, type: "run", t: "Run — 20 min + 4 strides (no quality)" },
-      { d: "Sat", n: 10, type: "rest", t: "Rest" },
-      { d: "Sun", n: 11, type: "long", t: "Long Run — 1:45 easy OR optional 20-mi", det: "Option B: 20-mi flat home course (Marina-GG-Crissy + Lake Merced), ~4:30, 10 gels. Game-day call." },
-    ]
-  },
-  {
-    n: 22, dates: "Oct 12-18", phase: 4, startMonth: 9, startDay: 12,
-    title: "Build Wk 5 — Race Shoes Locked",
-    summary: "Race shoes broken in by today. Last MP block before peak.",
-    sessions: [
-      { d: "Mon", n: 12, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 13, type: "run", t: "Run — 50 min easy" },
-      { d: "Wed", n: 14, type: "run", t: "Run — 55 min + 6 strides + 🚨 race shoes broken in tomorrow" },
-      { d: "Thu", n: 15, type: "strength", t: "Lower A + 🚨 race shoes deadline" },
-      { d: "Fri", n: 16, type: "quality", t: "🔥 2×20min @ tempo / 3min jog" },
-      { d: "Sat", n: 17, type: "rest", t: "Rest" },
-      { d: "Sun", n: 18, type: "long", t: "🎯 Long Run — 3:00 w/ LAST 30 MIN @ MP" },
-    ]
-  },
-  {
-    n: 23, dates: "Oct 19-25", phase: 4, startMonth: 9, startDay: 19,
-    title: "Build Wk 6 — Last Hard Wk",
-    summary: "Longest tempo (35 min). Long run 3:15 / 16 mi with 45 min MP.",
-    sessions: [
-      { d: "Mon", n: 19, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 20, type: "run", t: "Run — 50 min easy" },
-      { d: "Wed", n: 21, type: "run", t: "Run — 60 min easy" },
-      { d: "Thu", n: 22, type: "strength", t: "Lower A" },
-      { d: "Fri", n: 23, type: "quality", t: "🔥 35 min CONTINUOUS TEMPO (longest)" },
-      { d: "Sat", n: 24, type: "rest", t: "Rest" },
-      { d: "Sun", n: 25, type: "long", t: "🎯 Long Run — 3:15 / 16 mi + LAST 45 MIN MP" },
-    ]
-  },
-  {
-    n: 24, dates: "Oct 26 – Nov 1", phase: 5, startMonth: 9, startDay: 26,
-    title: "🎯 PEAK Wk 1 — Long Run #1 Dress Rehearsal",
-    summary: "Full dress rehearsal: 3:30 / 18 mi with last 60 min MP. Rain gear tested.",
-    sessions: [
-      { d: "Mon", n: 26, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 27, type: "run", t: "Run — 45 min easy" },
-      { d: "Wed", n: 28, type: "run", t: "Run — 55 min + 6 strides" },
-      { d: "Thu", n: 29, type: "strength", t: "Lower B (normal — taper next wk)" },
-      { d: "Fri", n: 30, type: "quality", t: "🔥 2×15min tempo + 🚨 rain shell test" },
-      { d: "Sat", n: 31, type: "rest", t: "Rest + pre-peak prep" },
-      { d: "Sun", n: 1, type: "peak", t: "🎯 PEAK LR #1 — 3:30 / 18 mi w/ last 60 MIN MP + DRESS REHEARSAL", det: "T-3 hr Breakfast B. Full race kit. 10 gels. Closest you'll get to race day before race day." },
-    ]
-  },
-  {
-    n: 25, dates: "Nov 2-8", phase: 5, startMonth: 10, startDay: 2,
-    title: "🎯 PEAK Wk 2 — Long Run #2 Final Fueling Test",
-    summary: "Final big effort: 3:30 / 18-20 mi with last 60 min MP. 10-12 gels.",
-    sessions: [
-      { d: "Mon", n: 2, type: "injection", t: "💉 10mg + Upper A Push" },
-      { d: "Tue", n: 3, type: "run", t: "Run — 45 min easy" },
-      { d: "Wed", n: 4, type: "run", t: "Run — 50 min + 6 strides" },
-      { d: "Thu", n: 5, type: "strength", t: "Lower B (last normal-volume)" },
-      { d: "Fri", n: 6, type: "quality", t: "🔥 25 min continuous tempo" },
-      { d: "Sat", n: 7, type: "rest", t: "Rest" },
-      { d: "Sun", n: 8, type: "peak", t: "🎯 PEAK LR #2 — 3:30 / 18-20 mi + LAST 60 MIN MP", det: "Final fueling test. 10-12 gels. Practice taking them while running." },
-    ]
-  },
-  {
-    n: 26, dates: "Nov 9-15", phase: 6, startMonth: 10, startDay: 9,
-    title: "🟡 Taper Wk 1 — −25% Volume",
-    summary: "Quality stays, only volume drops. Lower A moderate.",
-    sessions: [
-      { d: "Mon", n: 9, type: "injection", t: "💉 10mg + Upper B Pull" },
-      { d: "Tue", n: 10, type: "run", t: "Run — 40 min easy" },
-      { d: "Wed", n: 11, type: "run", t: "Run — 45 min easy" },
-      { d: "Thu", n: 12, type: "strength", t: "Lower A (moderate)" },
-      { d: "Fri", n: 13, type: "quality", t: "🔥 20 min tempo + 4×3min MP" },
-      { d: "Sat", n: 14, type: "rest", t: "Rest" },
-      { d: "Sun", n: 15, type: "long", t: "Long Run — 2:00 easy" },
-    ]
-  },
-  {
-    n: 27, dates: "Nov 16-22", phase: 6, startMonth: 10, startDay: 16,
-    title: "🟡 Taper Wk 2 — −50% + Strength Taper",
-    summary: "Drop heavy compounds. BW + Pallof + dead bug only on Thu. Carb store priming.",
-    sessions: [
-      { d: "Mon", n: 16, type: "injection", t: "💉 10mg + Upper LIGHT" },
-      { d: "Tue", n: 17, type: "run", t: "Run — 30 min easy" },
-      { d: "Wed", n: 18, type: "run", t: "Run — 35 min + 4 strides" },
-      { d: "Thu", n: 19, type: "strength", t: "🟡 BW + Pallof + dead bug ONLY" },
-      { d: "Fri", n: 20, type: "quality", t: "🔥 15 min @ MP + 2×3min MP", det: "Should feel EASY — that's the taper working." },
-      { d: "Sat", n: 21, type: "rest", t: "Rest + 🍞 carb store priming" },
-      { d: "Sun", n: 22, type: "long", t: "Long Run — 1:15 easy" },
-    ]
-  },
-  {
-    n: 28, dates: "Nov 23-28", phase: 6, startMonth: 10, startDay: 23,
-    title: "🏁 RACE WEEK — −75% Volume",
-    raceWeek: true,
-    summary: "Gym closes after Mon. Carb load Tue-Sat. Travel to Seattle.",
-    sessions: [
-      { d: "Mon", n: 23, type: "injection", t: "💉 10mg + LAST GYM (light shake)" },
-      { d: "Tue", n: 24, type: "run", t: "Run — 25 min easy + 🍞 carb load STARTS" },
-      { d: "Wed", n: 25, type: "run", t: "Run — 25 min w/ 3×90s MP" },
-      { d: "Thu", n: 26, type: "rest", t: "🦃 Thanksgiving — REST + carb load" },
-      { d: "Fri", n: 27, type: "run", t: "Shakeout — 15 min" },
-      { d: "Sat", n: 28, type: "rest", t: "Race Prep — bib pickup + final carb load + early sleep" },
-    ]
-  },
-  {
-    n: 29, dates: "Sun Nov 29", phase: 6, startMonth: 10, startDay: 29, isRaceDay: true,
-    title: "🏁 SEATTLE MARATHON",
-    summary: "26.2 mi · Target 5:45 (~13:10/mi avg) · 10-12 Maurten gels · low 40s + likely rain",
-    sessions: [
-      { d: "Sun", n: 29, type: "race", t: "🏁 SEATTLE MARATHON — RACE DAY", det: "T-3 hr Breakfast B. Mile 1-2 deliberately easy. 3-13 settle 13:00-13:15/mi. Mile 23 WALK the climb. Mile 24-26.2 push if legs have it.", metrics: ["26.2 mi", "5:45 target", "10-12 gels"] },
-    ]
-  },
+  {"n": 1, "dates": "May 18-24", "phase": 1, "startMonth": 4, "startDay": 18, "title": "RTR Wk 1 — Run 1 Back", "summary": "Foot cleared by ortho. Run 1 done Thu (1.32 mi outdoor, 11:57/mi). Sun = Run 2.", "sessions": [{"d": "Mon", "n": 18, "type": "rest", "t": "Rest", "det": "Pre-clearance day."}, {"d": "Tue", "n": 19, "type": "rest", "t": "Rest"}, {"d": "Wed", "n": 20, "type": "rest", "t": "Rest"}, {"d": "Thu", "n": 21, "type": "run", "t": "✅ Run 1 Back — 1.32 mi (DONE)", "det": "Diamond Heights. Pace 11:57/mi, elev 171ft, HR avg 144, max 163. Foot +90 min = 0-1/10.", "metrics": ["1.32 mi", "11:57/mi", "Z2 HR 144"]}, {"d": "Fri", "n": 22, "type": "strength", "t": "Upper A Push + foot tests", "det": "PT exercises start today. Calf raise + SL hop test. Then bench, shoulder press, fly, lateral raise, pushdown.", "metrics": ["Upper A"]}, {"d": "Sat", "n": 23, "type": "rest", "t": "Rest + Daily PT", "det": "Toe lift, doming, marble game, big toe stretch — start today, daily."}, {"d": "Sun", "n": 24, "type": "run", "t": "🟢 Run 2 — 25 min walk-jog (LOCKED)", "det": "5 walk → [60s jog ~12:00 / 90s walk] x 7 → 2 walk cool. Metronome 155 spm. HR <150. FLAT only.", "metrics": ["25 min", "~12:00/mi", "155 spm", "HR <150"], "flag": "TODAY"}]},
+  {"n": 2, "dates": "May 25-31", "phase": 1, "startMonth": 4, "startDay": 25, "title": "RTR Wk 2 — Daily PT Locks In", "summary": "First Mon-anchored week (10mg inject Mon). Wed + Sun runs.", "sessions": [{"d": "Mon", "n": 25, "type": "injection", "t": "💉 Tirzepatide 10mg + Upper A Push", "det": "Inject evening. Bench, shoulder press, fly, lateral, pushdown, dead bugs.", "metrics": ["Mon anchor"]}, {"d": "Tue", "n": 26, "type": "rest", "t": "Rest + PT exercises"}, {"d": "Wed", "n": 27, "type": "run", "t": "Run — 25 min walk-jog (Wk 2 Wed)", "det": "5 walk → 16 min [60s jog / 90s walk] x 6-7 → 4 cool. Day 2 post-injection = GI risk. FLAT.", "metrics": ["25 min", "155 spm", "FLAT only"]}, {"d": "Thu", "n": 28, "type": "strength", "t": "🆕 Lower Strength A (first since Apr 12)", "det": "RFE split squat 4×6/leg, goblet squat 2-sec pause, bent-knee seated calf raise (SOLEUS), SL calf raise, Pallof press.", "metrics": ["Lower A"]}, {"d": "Fri", "n": 29, "type": "rest", "t": "Rest + PT"}, {"d": "Sat", "n": 30, "type": "rest", "t": "Rest + PT"}, {"d": "Sun", "n": 31, "type": "long", "t": "Long Run — 30 min walk-jog", "det": "5 walk → 20 min [60s jog / 90s walk] x 8 → 5 cool. Metronome 155. HR <150. FLAT.", "metrics": ["30 min", "155 spm", "FLAT only"]}]},
+  {"n": 3, "dates": "Jun 1-7", "phase": 1, "startMonth": 5, "startDay": 1, "title": "RTR Wk 3 — 3rd Run Intro", "summary": "Fri run added. Biggest volume jump of build (+25%).", "sessions": [{"d": "Mon", "n": 1, "type": "injection", "t": "💉 10mg + Upper B Pull", "det": "Pull-ups, cable row, face pull, incline DB curl, reverse fly, plank."}, {"d": "Tue", "n": 2, "type": "rest", "t": "Rest + PT"}, {"d": "Wed", "n": 3, "type": "run", "t": "Run — 25 min easy", "det": "5 walk → 18 min mostly continuous Z2 → 2 walk. Metronome 158 spm.", "metrics": ["25 min", "158 spm", "HR <150"]}, {"d": "Thu", "n": 4, "type": "strength", "t": "Lower B Posterior + Plyo", "det": "RDL 3-sec eccentric, bench, weighted pull-up, SL RDL, suitcase carry, pogo hops."}, {"d": "Fri", "n": 5, "type": "run", "t": "🆕 Run — 15-20 min easy (3rd run intro)", "det": "3 walk → 12-15 min easy Z2 → 3 walk. \"Running on tired legs\" stimulus.", "metrics": ["15-20 min", "158 spm"]}, {"d": "Sat", "n": 6, "type": "rest", "t": "Rest + PT"}, {"d": "Sun", "n": 7, "type": "long", "t": "Long Run — 40 min → mostly continuous", "det": "5 walk → 30 min jog (1-min walks every 8-10 if needed) → 5 cool.", "metrics": ["40 min", "158 spm", "FLAT"]}]},
+  {"n": 4, "dates": "Jun 8-14", "phase": 1, "startMonth": 5, "startDay": 8, "title": "RTR Wk 4 — First Quality", "summary": "First speed work: 4×1min cruise bursts. Mild rolling terrain OK.", "sessions": [{"d": "Mon", "n": 8, "type": "injection", "t": "💉 10mg + Upper A Push"}, {"d": "Tue", "n": 9, "type": "rest", "t": "Rest + PT"}, {"d": "Wed", "n": 10, "type": "run", "t": "Run — 25 min easy", "det": "Continuous easy Z2. Cadence 158. Mild rolling OK if foot clean.", "metrics": ["25 min", "158 spm"]}, {"d": "Thu", "n": 11, "type": "strength", "t": "Lower A — progression", "det": "Calf raise: progress to 3×12 with 25 lb DB on knee (bent-knee seated)."}, {"d": "Fri", "n": 12, "type": "quality", "t": "🔥 QUALITY — 4×1min cruise (FIRST SPEED WORK)", "det": "5 walk + 5 jog warm → 4× [1 min RPE 6-7 (HR 150-160) / 1 min walk] → 5 jog cool. FLAT only.", "metrics": ["4×1min", "RPE 6-7", "FLAT"]}, {"d": "Sat", "n": 13, "type": "rest", "t": "Rest + PT"}, {"d": "Sun", "n": 14, "type": "long", "t": "Long Run — 50 min continuous", "det": "50 min continuous easy Z2. HR <150. Cadence 160 spm. Rolling OK.", "metrics": ["50 min", "160 spm"]}]},
+  {"n": 5, "dates": "Jun 15-21", "phase": 1, "startMonth": 5, "startDay": 15, "title": "RTR Wk 5 — First Mid-Run Gel", "summary": "Strides start (Wed). First in-run fueling on Sunday (1 Maurten @ min 25).", "sessions": [{"d": "Mon", "n": 15, "type": "injection", "t": "💉 10mg + Upper B Pull"}, {"d": "Tue", "n": 16, "type": "rest", "t": "Rest + PT"}, {"d": "Wed", "n": 17, "type": "run", "t": "Run — 30 min easy + 4 strides", "det": "5 walk → 25 min easy → 4× 20s strides → 2 walk. Cadence 158.", "metrics": ["30 min", "4 strides"]}, {"d": "Thu", "n": 18, "type": "strength", "t": "Lower B + 🚨 Maurten 12-pack deadline"}, {"d": "Fri", "n": 19, "type": "quality", "t": "🔥 4×2min cruise", "det": "5 walk + 5 jog → 4× [2 min RPE 6-7 / 1 min walk] → 5 jog cool. FLAT.", "metrics": ["4×2min", "FLAT"]}, {"d": "Sat", "n": 20, "type": "rest", "t": "Rest + PT"}, {"d": "Sun", "n": 21, "type": "long", "t": "Long Run — 60 min + 🍯 FIRST GEL", "det": "60 min easy + 1 Maurten @ min 25. Cadence 158.", "metrics": ["60 min", "1 gel @ 25"]}]},
+  {"n": 6, "dates": "Jun 22-28", "phase": 1, "startMonth": 5, "startDay": 22, "title": "RTR Wk 6 — Volume Building", "summary": "2 gels in long run, 5 cruise reps, 6 strides on Wed.", "sessions": [{"d": "Mon", "n": 22, "type": "injection", "t": "💉 10mg + Upper A Push"}, {"d": "Tue", "n": 23, "type": "rest", "t": "Rest + PT"}, {"d": "Wed", "n": 24, "type": "run", "t": "Run — 30 min + 6 strides", "metrics": ["30 min", "6 strides"]}, {"d": "Thu", "n": 25, "type": "strength", "t": "Lower A — calf raise progress 30 lb"}, {"d": "Fri", "n": 26, "type": "quality", "t": "🔥 5×2min cruise", "metrics": ["5×2min"]}, {"d": "Sat", "n": 27, "type": "rest", "t": "Rest + PT"}, {"d": "Sun", "n": 28, "type": "long", "t": "Long Run — 70 min + 🍯🍯 2 gels", "det": "Min 25 + min 50.", "metrics": ["70 min", "2 gels"]}]},
+  {"n": 7, "dates": "Jun 29 – Jul 5", "phase": 1, "startMonth": 5, "startDay": 29, "title": "🛫 NZ TRAVEL Wk 1 — Maintenance", "summary": "NZ trip starts Jun 29. Maintenance only: 3 runs 25-30 min, bodyweight S&C, daily calf raises. No progression.", "sessions": [{"d": "Mon", "n": 29, "type": "injection", "t": "💉 10mg + Bodyweight Upper (hotel)"}, {"d": "Tue", "n": 30, "type": "rest", "t": "Rest + travel day"}, {"d": "Wed", "n": 1, "type": "run", "t": "NZ maintenance run 1 — 25 min easy", "metrics": ["25 min"]}, {"d": "Thu", "n": 2, "type": "strength", "t": "Bodyweight Lower (hotel)"}, {"d": "Fri", "n": 3, "type": "run", "t": "NZ maintenance run 2 — 25 min easy", "metrics": ["25 min"]}, {"d": "Sat", "n": 4, "type": "rest", "t": "Calf raises daily — 15 single-leg seated"}, {"d": "Sun", "n": 5, "type": "run", "t": "NZ maintenance run 3 — 30 min easy run/walk", "metrics": ["30 min"]}]},
+  {"n": 8, "dates": "Jul 6-12", "phase": 1, "startMonth": 6, "startDay": 6, "title": "🛬 NZ TRAVEL Wk 2 — Return Jul 11", "summary": "Last NZ week. Return travel Jul 11. Sunday = rest + jet-lag recovery, no run.", "sessions": [{"d": "Mon", "n": 6, "type": "injection", "t": "💉 10mg + Bodyweight Upper (hotel)"}, {"d": "Tue", "n": 7, "type": "rest", "t": "Rest + calf raises daily"}, {"d": "Wed", "n": 8, "type": "run", "t": "NZ maintenance run 4 — 25 min easy", "metrics": ["25 min"]}, {"d": "Thu", "n": 9, "type": "strength", "t": "Bodyweight Lower (hotel)"}, {"d": "Fri", "n": 10, "type": "run", "t": "NZ maintenance run 5 — 25 min easy", "metrics": ["25 min"]}, {"d": "Sat", "n": 11, "type": "rest", "t": "🛬 Travel home — full rest day"}, {"d": "Sun", "n": 12, "type": "rest", "t": "Jet-lag recovery — 20 min walk OK, no run"}]},
+  {"n": 9, "dates": "Jul 13-19", "phase": 1, "startMonth": 6, "startDay": 13, "title": "Wk 9 — Easy Consistency (no ramp)", "summary": "No-ramp reset per Sahil (Jul 12): 3 easy runs by feel + lift 3×/wk, no long-run growth, no targets. Tirz now Sunday eve. All sessions ~10 AM.", "sessions": [{"d": "Mon", "n": 13, "type": "run", "t": "✅ Easy run DONE — 1.84 mi", "det": "First run back post-NZ. Flat, HR 145 avg / 154 max, dead Z2, ~zero drift. Watch on.", "metrics": ["1.84 mi", "~14:15/mi", "Z2 HR 145"]}, {"d": "Tue", "n": 14, "type": "rest", "t": "Rest (Upper B slipped to Wed)"}, {"d": "Wed", "n": 15, "type": "strength", "t": "✅ Upper B DONE — Pull Focus", "det": "First lift back (18 days off). Lat pulldown 4×10@80, single-arm row 4×10@60, face pull 90×15, hammer curl→80×10. ~33 min, clean re-entry. RPE 5.", "metrics": ["Upper B", "~33 min", "RPE 5"]}, {"d": "Thu", "n": 16, "type": "run", "t": "🕙 10 AM — Easy run by feel, 25–30 min", "det": "First run since Mon. HR ≤150, flat, watch on. No target. AM: go light, smoothie after.", "metrics": ["25–30 min", "HR ≤150"]}, {"d": "Fri", "n": 17, "type": "strength", "t": "🕙 10 AM — Lower B (first Lower back)", "det": "Legs stop getting skipped. DB RDL 4×6 (3s ecc), goblet squat 4×8, SL RDL 3×8/leg, bent-knee seated calf raise 4×10, standing SL calf raise 3×12/leg, Pallof 3×10. Ease in, 1–2 in tank.", "metrics": ["Lower B", "calf/soleus"]}, {"d": "Sat", "n": 18, "type": "rest", "t": "Rest + mobility (optional easy run)"}, {"d": "Sun", "n": 19, "type": "injection", "t": "💉 Tirz (eve) + rest", "det": "Injection now weekly Sunday evening (moved off Monday). Rest or easy run by feel — no target.", "metrics": ["Tirz Sun"]}]},
+  {"n": 10, "dates": "Jul 20-26", "phase": 1, "startMonth": 6, "startDay": 20, "title": "19-Week Realignment — Indiana Re-entry", "summary": "Indiana/customer onboarding caused a 10-day gap. Thu run is the actual restart; no make-up quality.", "sessions": [{"d": "Mon", "n": 20, "type": "rest", "t": "Indiana + customer onboarding — missed"}, {"d": "Tue", "n": 21, "type": "rest", "t": "Indiana + customer onboarding — missed"}, {"d": "Wed", "n": 22, "type": "injection", "t": "Travel recovery · 💉 10mg DONE", "det": "Injection moved to Wednesday because of Indiana travel; this is now the working weekly cadence."}, {"d": "Thu", "n": 23, "type": "run", "t": "✅ Evening Run — 2.95 mi DONE", "det": "32:57 at 11:09/mi, 141 ft gain, HR 163 avg / 178 max, RPE 6. A moderate re-entry, not an easy run.", "metrics": ["2.95 mi", "32:57", "RPE 6"]}, {"d": "Fri", "n": 24, "type": "rest", "t": "Recovery + full fueling", "det": "No cruise intervals after Thursday's moderate run. Mobility, ≥2,200 kcal, ≥150 g protein, electrolytes."}, {"d": "Sat", "n": 25, "type": "strength", "t": "Upper A re-entry — Push", "det": "9 AM. DB bench 4×8 @ 2×35 lb; DB shoulder press 4×8 @ 2×20; cable fly 3×12 @ 30/40/40; lateral raise 3×12 @ 10/side; pushdown 3×10 @ 60; dead bug 3×10/side. Leave 2 reps in reserve.", "metrics": ["Upper A", "RPE 7"]}, {"d": "Sun", "n": 26, "type": "long", "t": "Long Run — 45 min easy", "det": "8:30 AM. Strict 30/30 run-walk from minute 1, flat, HR ≤150. Maurten at min 25 with water. The goal is finishing fresher than you started.", "metrics": ["45 min", "30/30", "1 gel"]}]},
+  {"n": 11, "dates": "Jul 27 – Aug 2", "phase": 2, "startMonth": 6, "startDay": 27, "title": "19-Week Build Wk 1 — Re-establish Frequency", "summary": "Three easy runs, three lifts, no intensity. The win is completing the week.", "sessions": [{"d": "Mon", "n": 27, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 28, "type": "run", "t": "25 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["25 min easy", "9 AM"]}, {"d": "Wed", "n": 29, "type": "strength", "t": "Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 30, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 31, "type": "strength", "t": "25 min easy + Upper A — Push", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["25 min", "Upper A — Push"]}, {"d": "Sat", "n": 1, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 2, "type": "long", "t": "Long Run — 0:50", "det": "Strict 30/30 run-walk. Flat. 1 Maurten at min 25 with water. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["50 min", "30/30 run-walk"]}]},
+  {"n": 12, "dates": "Aug 3 – Aug 9", "phase": 2, "startMonth": 7, "startDay": 3, "title": "19-Week Build Wk 2 — Aerobic Rhythm", "summary": "Hold three runs and three lifts. Long run reaches one hour without chasing pace.", "sessions": [{"d": "Mon", "n": 3, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 4, "type": "run", "t": "30 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["30 min easy", "9 AM"]}, {"d": "Wed", "n": 5, "type": "strength", "t": "Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 6, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 7, "type": "strength", "t": "30 min easy + Upper B — Pull", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["30 min", "Upper B — Pull"]}, {"d": "Sat", "n": 8, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 9, "type": "long", "t": "Long Run — 1:00", "det": "Strict 30/30. Flat. 1 Maurten at min 25 plus water. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["60 min", "30/30 run-walk"]}]},
+  {"n": 13, "dates": "Aug 10 – Aug 16", "phase": 2, "startMonth": 7, "startDay": 10, "title": "19-Week Build Wk 3 — Fourth Run Added", "summary": "Add a 20-minute recovery run before Upper A. Four impact exposures begin.", "sessions": [{"d": "Mon", "n": 10, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 11, "type": "quality", "t": "30 min easy + 4×20s strides", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["30 min easy + 4×20s strides", "9 AM"]}, {"d": "Wed", "n": 12, "type": "strength", "t": "20 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 20 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 13, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 14, "type": "strength", "t": "30 min easy + Upper A — Push", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["30 min", "Upper A — Push"]}, {"d": "Sat", "n": 15, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 16, "type": "long", "t": "Long Run — 1:10", "det": "Strict 30/30. Flat. 1 Maurten at min 25 plus sports-drink sips. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["70 min", "30/30 run-walk"]}]},
+  {"n": 14, "dates": "Aug 17 – Aug 23", "phase": 2, "startMonth": 7, "startDay": 17, "title": "19-Week Build Wk 4 — Consolidate", "summary": "Four runs, three lifts. No structured quality yet.", "sessions": [{"d": "Mon", "n": 17, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 18, "type": "quality", "t": "35 min easy + 4×20s strides", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["35 min easy + 4×20s strides", "9 AM"]}, {"d": "Wed", "n": 19, "type": "strength", "t": "20 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 20 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 20, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 21, "type": "strength", "t": "35 min easy + Upper B — Pull", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["35 min", "Upper B — Pull"]}, {"d": "Sat", "n": 22, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 23, "type": "long", "t": "Long Run — 1:20", "det": "Strict 30/30. Flat-to-gently rolling. Fuel at min 25 and 60. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["80 min", "30/30 run-walk"]}]},
+  {"n": 15, "dates": "Aug 24 – Aug 30", "phase": 3, "startMonth": 7, "startDay": 24, "title": "Aerobic Base Wk 1 — Cruise Work Begins", "summary": "First controlled moderate work; everything else remains easy.", "sessions": [{"d": "Mon", "n": 24, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 25, "type": "quality", "t": "40 min total: 4×2 min cruise / 1 min walk", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["40 min total: 4×2 min cruise / 1 min walk", "9 AM"]}, {"d": "Wed", "n": 26, "type": "strength", "t": "25 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 25 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 27, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 28, "type": "strength", "t": "40 min easy + Upper A — Push", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["40 min", "Upper A — Push"]}, {"d": "Sat", "n": 29, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 30, "type": "long", "t": "Long Run — 1:35", "det": "Strict 30/30. Gently rolling. Fuel at min 25 and 60; log GI 1–5. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["95 min", "30/30 run-walk"]}]},
+  {"n": 16, "dates": "Aug 31 – Sep 6", "phase": 3, "startMonth": 7, "startDay": 31, "title": "Cutback Wk — Absorb + Lift", "summary": "Running drops ~25%; three lifts stay to protect muscle and calves.", "sessions": [{"d": "Mon", "n": 31, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 1, "type": "run", "t": "30 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["30 min easy", "9 AM"]}, {"d": "Wed", "n": 2, "type": "strength", "t": "20 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 20 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 3, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 4, "type": "strength", "t": "30 min easy + Upper B — Pull", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["30 min", "Upper B — Pull"]}, {"d": "Sat", "n": 5, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 6, "type": "long", "t": "Long Run — 1:10", "det": "Strict 30/30. Flat. 1 Maurten at min 25 plus water. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["70 min", "30/30 run-walk"]}]},
+  {"n": 17, "dates": "Sep 7 – Sep 13", "phase": 3, "startMonth": 8, "startDay": 7, "title": "Aerobic Base Wk 3 — First 110 Minutes", "summary": "Return from cutback; strength shifts to two core sessions as run load rises.", "sessions": [{"d": "Mon", "n": 7, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 8, "type": "quality", "t": "40 min total: 5×2 min cruise / 1 min walk", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["40 min total: 5×2 min cruise / 1 min walk", "9 AM"]}, {"d": "Wed", "n": 9, "type": "strength", "t": "25 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 25 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 10, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 11, "type": "run", "t": "40 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["40 min easy"]}, {"d": "Sat", "n": 12, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 13, "type": "long", "t": "Long Run — 1:50", "det": "Strict 30/30. Gently rolling. 35–45 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["110 min", "30/30 run-walk"]}]},
+  {"n": 18, "dates": "Sep 14 – Sep 20", "phase": 3, "startMonth": 8, "startDay": 14, "title": "Aerobic Base Wk 4 — Controlled Descents", "summary": "First deliberate downhill exposure, kept short and controlled.", "sessions": [{"d": "Mon", "n": 14, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 15, "type": "quality", "t": "45 min total: 4×3 min steady / 2 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["45 min total: 4×3 min steady / 2 min easy", "9 AM"]}, {"d": "Wed", "n": 16, "type": "strength", "t": "30 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 30 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 17, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 18, "type": "run", "t": "45 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["45 min easy"]}, {"d": "Sat", "n": 19, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 20, "type": "long", "t": "Long Run — 2:05", "det": "Strict 30/30. Rolling route with 10 min cumulative controlled descent. 40–50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["125 min", "30/30 run-walk"]}]},
+  {"n": 19, "dates": "Sep 21 – Sep 27", "phase": 3, "startMonth": 8, "startDay": 21, "title": "Aerobic Base Wk 5 — Hill-Walk Skill", "summary": "Build continuous aerobic time and practice walking grades before fatigue.", "sessions": [{"d": "Mon", "n": 21, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 22, "type": "quality", "t": "45 min total: 3×6 min steady / 3 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["45 min total: 3×6 min steady / 3 min easy", "9 AM"]}, {"d": "Wed", "n": 23, "type": "strength", "t": "30 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 30 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 24, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 25, "type": "run", "t": "50 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["50 min easy"]}, {"d": "Sat", "n": 26, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 27, "type": "long", "t": "Long Run — 2:20", "det": "Strict 30/30. Rolling. Power-walk every meaningful climb. 45–50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["140 min", "30/30 run-walk"]}]},
+  {"n": 20, "dates": "Sep 28 – Oct 4", "phase": 4, "startMonth": 8, "startDay": 28, "title": "Marathon Build Wk 1 — First 2:35", "summary": "Hill strength enters Tuesday; Sunday remains aerobic, not a race.", "sessions": [{"d": "Mon", "n": 28, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 29, "type": "quality", "t": "50 min total: 6×60s hill @ 4–6% / full easy recovery", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["50 min total: 6×60s hill @ 4–6% / full easy recovery", "9 AM"]}, {"d": "Wed", "n": 30, "type": "strength", "t": "35 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 35 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 1, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 2, "type": "run", "t": "50 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["50 min easy"]}, {"d": "Sat", "n": 3, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 4, "type": "long", "t": "Long Run — 2:35", "det": "Strict 30/30. Rolling. Controlled descents; 45–55 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["155 min", "30/30 run-walk"]}]},
+  {"n": 21, "dates": "Oct 5 – Oct 11", "phase": 4, "startMonth": 9, "startDay": 5, "title": "Cutback Wk — Rebuild Muscle", "summary": "Running drops ~30%; Upper B returns Friday because muscle work wins the cutback.", "sessions": [{"d": "Mon", "n": 5, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 6, "type": "quality", "t": "35 min easy + 4×20s strides", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["35 min easy + 4×20s strides", "9 AM"]}, {"d": "Wed", "n": 7, "type": "strength", "t": "25 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 25 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 8, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 9, "type": "strength", "t": "35 min easy + Upper A — Push", "det": "Conversational, HR ≤150, flat-to-gently rolling. Run first, then upper-body work; one protected 9 AM block.", "metrics": ["35 min", "Upper A — Push"]}, {"d": "Sat", "n": 10, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 11, "type": "long", "t": "Long Run — 1:45", "det": "Strict 30/30. Flat. 40–50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["105 min", "30/30 run-walk"]}]},
+  {"n": 22, "dates": "Oct 12 – Oct 18", "phase": 4, "startMonth": 9, "startDay": 12, "title": "Marathon Build Wk 3 — MP-Effort Finish", "summary": "First marathon-effort segment, governed by breathing and HR rather than pace.", "sessions": [{"d": "Mon", "n": 12, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 13, "type": "quality", "t": "50 min total: 3×8 min steady / 3 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["50 min total: 3×8 min steady / 3 min easy", "9 AM"]}, {"d": "Wed", "n": 14, "type": "strength", "t": "35 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 35 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 15, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 16, "type": "run", "t": "50 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["50 min easy"]}, {"d": "Sat", "n": 17, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 18, "type": "long", "t": "Long Run — 2:45", "det": "Strict 30/30. Rolling; final 20 min at marathon effort, never above RPE 6. 50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["165 min", "30/30 run-walk"]}]},
+  {"n": 23, "dates": "Oct 19 – Oct 25", "phase": 4, "startMonth": 9, "startDay": 19, "title": "Marathon Build Wk 4 — Fatigue-State Climb", "summary": "Longest run before the dress rehearsal; finish with a deliberate uphill walk.", "sessions": [{"d": "Mon", "n": 19, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 20, "type": "quality", "t": "55 min total: 2×12 min steady / 4 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["55 min total: 2×12 min steady / 4 min easy", "9 AM"]}, {"d": "Wed", "n": 21, "type": "strength", "t": "35 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 35 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 22, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 23, "type": "run", "t": "55 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["55 min easy"]}, {"d": "Sat", "n": 24, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 25, "type": "long", "t": "Long Run — 3:00", "det": "Strict 30/30. Finish with 10 min purposeful uphill walking. 50–60 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["180 min", "30/30 run-walk"]}]},
+  {"n": 24, "dates": "Oct 26 – Nov 1", "phase": 5, "startMonth": 9, "startDay": 26, "title": "Peak Wk — Full Dress Rehearsal", "summary": "One peak long run, not two. Race kit, fueling, hills, and weather protocol.", "sessions": [{"d": "Mon", "n": 26, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 27, "type": "quality", "t": "45 min total: 4×3 min controlled hills / full easy recovery", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["45 min total: 4×3 min controlled hills / full easy recovery", "9 AM"]}, {"d": "Wed", "n": 28, "type": "strength", "t": "30 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 30 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 29, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 30, "type": "run", "t": "45 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["45 min easy"]}, {"d": "Sat", "n": 31, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 1, "type": "long", "t": "Long Run — 3:30", "det": "3:30 cap. Strict 30/30 on a hilly route targeting 1,000–1,200 ft. Full race kit; 50–60 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["210 min", "30/30 run-walk"]}]},
+  {"n": 25, "dates": "Nov 2 – Nov 8", "phase": 5, "startMonth": 10, "startDay": 2, "title": "Peak Absorption Wk — Come Down Cleanly", "summary": "No second 3:30 effort. Absorb the dress rehearsal and retain frequency.", "sessions": [{"d": "Mon", "n": 2, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 3, "type": "run", "t": "40 min easy", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["40 min easy", "9 AM"]}, {"d": "Wed", "n": 4, "type": "strength", "t": "25 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 25 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 5, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 6, "type": "run", "t": "40 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["40 min easy"]}, {"d": "Sat", "n": 7, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 8, "type": "long", "t": "Long Run — 2:30", "det": "Strict 30/30. Easy rolling route; no hard finish. 50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["150 min", "30/30 run-walk"]}]},
+  {"n": 26, "dates": "Nov 9 – Nov 15", "phase": 6, "startMonth": 10, "startDay": 9, "title": "Taper Wk 1 — Volume Down, Rhythm Held", "summary": "First disciplined taper week. Final moderate lower-body lift.", "sessions": [{"d": "Mon", "n": 9, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 10, "type": "quality", "t": "40 min total with 3×5 min at marathon effort", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["40 min total with 3×5 min at marathon effort", "9 AM"]}, {"d": "Wed", "n": 11, "type": "strength", "t": "25 min recovery + Upper A — Push · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 25 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper A — Push", "Injection 9 PM"]}, {"d": "Thu", "n": 12, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 13, "type": "run", "t": "35 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["35 min easy"]}, {"d": "Sat", "n": 14, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 15, "type": "long", "t": "Long Run — 2:00", "det": "Strict 30/30. Flat-to-rolling, fully conversational outside MP blocks. 40–50 g carb/hr. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["120 min", "30/30 run-walk"]}]},
+  {"n": 27, "dates": "Nov 16 – Nov 22", "phase": 6, "startMonth": 10, "startDay": 16, "title": "Taper Wk 2 — Strength Taper", "summary": "Heavy compounds stop. Short upper activation plus bodyweight/core only.", "sessions": [{"d": "Mon", "n": 16, "type": "rest", "t": "Full rest + mobility", "det": "No make-up work. Walk the dogs, eat to the floor, and protect sleep."}, {"d": "Tue", "n": 17, "type": "quality", "t": "30 min easy + 4×20s strides", "det": "9 AM. Full dynamic warm-up + 15 calf raises. Easy portions conversational; quality never exceeds RPE 6–7.", "metrics": ["30 min easy + 4×20s strides", "9 AM"]}, {"d": "Wed", "n": 18, "type": "strength", "t": "20 min recovery + Upper B — Pull · 💉 10mg evening", "det": "9 AM protected block. Recovery run first: 20 min, HR ≤145; then upper-body work at RPE 7–8. Injection at 9 PM; front-load breakfast and lunch.", "metrics": ["Upper B — Pull", "Injection 9 PM"]}, {"d": "Thu", "n": 19, "type": "strength", "t": "Lower + calf/soleus", "det": "9 AM. DB RDL 4×6, goblet squat 4×8, SL RDL 3×8/leg, seated bent-knee calf 4×10, standing SL calf 3×12/leg, Pallof 3×10/side. Add reps, then load.", "metrics": ["Lower", "calf/soleus"]}, {"d": "Fri", "n": 20, "type": "run", "t": "25 min easy", "det": "Conversational, HR ≤150, flat-to-gently rolling.", "metrics": ["25 min easy"]}, {"d": "Sat", "n": 21, "type": "rest", "t": "Rest + long-run prep", "det": "Optional dog walk only. Carb-forward dinner, electrolytes, gear staged, 7+ hours sleep."}, {"d": "Sun", "n": 22, "type": "long", "t": "Long Run — 1:00", "det": "Strict 30/30. Flat and easy. No downhill work. Easy ceiling HR 150; walk sooner if HR or form drifts.", "metrics": ["60 min", "30/30 run-walk"]}]},
+  {"n": 28, "dates": "Nov 23-28", "phase": 6, "startMonth": 10, "startDay": 23, "title": "🏁 Race Week — Protect Freshness", "raceWeek": true, "summary": "Gym closes after Monday. Normal Wednesday injection only if unchanged with prescriber. Carb load Wed–Sat.", "sessions": [{"d": "Mon", "n": 23, "type": "strength", "t": "Upper activation — LAST GYM", "det": "25 minutes, two easy sets per movement, nothing to failure. Gym closes after today."}, {"d": "Tue", "n": 24, "type": "run", "t": "25 min easy + 3×60s MP", "det": "Full sentences throughout; finish wanting more."}, {"d": "Wed", "n": 25, "type": "injection", "t": "Rest · 💉 normal injection evening", "det": "Race-week timing belongs to the prescriber. Confirm the plan by Nov 1; do not improvise this week."}, {"d": "Thu", "n": 26, "type": "rest", "t": "Thanksgiving rest + carb load"}, {"d": "Fri", "n": 27, "type": "run", "t": "15 min shakeout + 4 strides"}, {"d": "Sat", "n": 28, "type": "rest", "t": "Bib, gear, breakfast prep, early sleep"}]},
+  {"n": 29, "dates": "Sun Nov 29", "phase": 7, "startMonth": 10, "startDay": 29, "isRaceDay": true, "title": "🏁 SEATTLE MARATHON", "summary": "26.2 mi · finish-first execution · 30/30 run-walk · mile-23 climb walked by plan", "sessions": [{"d": "Sun", "n": 29, "type": "race", "t": "🏁 SEATTLE MARATHON — RACE DAY", "det": "30/30 from mile 1. Effort first; 5:45 remains provisional until the peak rehearsal. Walk the entire mile-23 climb. Fuel 50–60 g carb/hr and chase gels with water.", "metrics": ["26.2 mi", "30/30", "50–60 g carb/hr"]}]},
 ];
+
+  /* DATA:END */
 
 /* =====================================================
    RENDER
